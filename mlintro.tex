@@ -12,7 +12,7 @@ Neglecting any functional description, the human brain can be described as an or
 \end{figure}
  With our current understanding, the neurons are the units performing basic "operations" within the human brain, and their aggregate response is generating the high-level behaviour typical of humans.
  A neuron, as sketched in Figure~\ref{fig:neuron}, is composed of three main units: a number of dendrites, the soma (the cell body), and an axion; the total size largely varies between different types of neurons; the neurons used for cognitive functions (as those in the grey matter of the brain) are usually short, XX $\mu$m.
-Functionally, a neuron is able to generate an electric response on the axion (\emph{output}), depending on the electrical potential present at the synapses (\emph{inputs}) present on the dendrites, generating a quite low-level response mechanism. Neurons are \emph{chained} by connections berween axions and dendrites, generating a mesh in which N neurons are connected via M synapses.
+Functionally, a neuron is able to generate an electric response on the axion (\emph{output}), depending on the electrical potential present at the synapses (\emph{inputs}) present on the dendrites, generating a quite low-level response mechanism. Neurons are \emph{chained} by connections between axions and dendrites, generating a mesh in which N neurons are connected via M synapses.
  The high-level response of the human brain to stimula is understood to come from the complexity of such mesh, with a standard human brain featuring $~10^{11}$ neurons each with $~7000$ synapses, for a total of $~10^{15}$ "connections".
 
  In literature various models of the neuron behavior have been proposed~\cite{neuronbe1, neuronbe2, neuronbe3}, %https://en.wikipedia.org/wiki/Biological_neuron_model
@@ -35,16 +35,25 @@ where $w_i$ are weights defined by chemical potentials at the synapses, and the 
                 0 &  \text{otherwise}
               \end{cases}
 \end{equation}
-Today, two small modifications are typical when using Neural Netorks:
+Today, two small modifications are typical when using Neural Networks:
 \begin{itemize}
-\item the addition of a further synapse $x_0$ which is alwsys 1, as a bias to the system; its weigth is referred to as $x_0$ or $b$ () as in ]emph{bias}.
-\item the use of continous $f$ non linear functions, as the logistic~\cite{logistic} or the hyperbolic~\cite{hyperbolic} functions.
+\item the addition of a further synapse $x_0$ which is always 1, as a bias to the system; its weight is referred to as $x_0$ or $b$ () as in \emph{bias}.
+\item the use of continuous $f$ non linear functions, as the logistic~\cite{logistic} or the hyperbolic~\cite{hyperbolic} functions.
 \end{itemize}
 
-Neural networks are obtained by combining multiple neurons in \emph{networks}, usually in a layered structure: one layer is used to map the inputs, a few/many layers are \emph{hidden}, and a single layer used to to map the outputs. On top of that, more complex neurons an be used, for example including a "memory" cell, or presenting a recurrent behavior by reusing its output as one of the inputs. A full description of all the type of neurons and networks is beyond the scope of this chapter; in the following, the ones most relevalnt to Monte Carlo simulations will be presented wit more detail. For reference, still, a complete classification of currently relevant neural networks is shown in Figure~\ref{fig:types}.
+Neural networks are obtained by combining multiple neurons in \emph{networks}, usually in a layered structure: one layer is used to map the inputs, a few/many layers are \emph{hidden}, and a single layer used to to map the outputs. On top of that, more complex neurons an be used, for example including a "memory" cell, or presenting a recurrent behavior by reusing its output as one of the inputs. A full description of all the type of neurons and networks is beyond the scope of this chapter; in the following, the ones most relevant to Monte Carlo simulations will be presented wit more detail. For reference, still, a complete classification of currently relevant neural networks is shown in Figure~\ref{fig:types}.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/types.png}
-    \caption{Typs of neurons and neural networks currently relevant in literature (Copyright F. van Veen 2016).}
+    \includegraphics[width=0.9\textwidth]{images/types.png}
+    \caption{Types of neurons and neural networks currently relevant in literature (Copyright F. van Veen 2016).}
     \label{fig:types}
 \end{figure}
+As clearly visible in the figure, some network topologies have an high number of hidden layers. While the Universal Approximation Theorem~\cite{nonlinearitytheorem} states that under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be "deep" (i.e. with many hidden layers). This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with a more identifiable and logical role. Hence, relevant networks in today's science tend to be deep.
+
+\subsection{Convolutional networks}
+Convolutional networks are a useful subset of neural networks, which exhibit peculiar characteristics of being space invariant with respect of the inputs.
+
+They are particularly interesting in the realm of Monte Carlo simulations, since the space invariance is a valuable characteristics: for example, a 
+
+
+
