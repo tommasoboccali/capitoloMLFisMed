@@ -74,8 +74,14 @@ In order to be applied to Monte Carlo simulations, instead, the capability to pr
 \label{sec:unsupervised}
 The autoencoders are a family of unsupervised Neural Networks designed to learn a lower dimensional representation (say N dimensions) out of a set of data (with M dimensions, M \textgreater N). The N dimension representation ("latent space") can be seen as coming from a a 
 
-The easiest for of autoencoders in one in which the number of inputs and outputs equals to M, and where there is a layer at dimensionality N. The training is obtained by forcing the network to reproduce as close a possible the iput features at the output layer, thus requestin the N-dimension space to be as sufficeint as possible to represent the M-dimension inputs (see Figure~\ref{fig:autoencoder}).
+The easiest for of autoencoders in one in which the number of inputs and outputs equals to M, and where there is a layer at dimensionality N. The training is obtained by forcing the network to reproduce as close a possible the input features at the output layer, thus requestin the N-dimension space to be as sufficient as possible to represent the M-dimension inputs (see Figure~\ref{fig:autoencoder}).
 
+\begin{figure}[h]
+     \centering
+     \includegraphics[width=0.85\textwidth]{images/autoencoder.png}
+     \caption{An autoencoder in its simplest form.}
+     \label{fig:autoencoder}
+ \end{figure}
 
 \subsubsection{Generative Adversarial Networks}
 \subsubsection{Graph Networks}
