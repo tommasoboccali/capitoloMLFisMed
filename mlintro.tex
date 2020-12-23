@@ -92,19 +92,34 @@ The easiest form of autoencoder is one in which the number of inputs and outputs
 
 \begin{figure}[h]
      \centering
-     \includegraphics[width=0.85\textwidth]{images/autoencoder.png}
+     \includegraphics[width=0.95\textwidth]{images/autoencoder.png}
      \caption{An autoencoder in its simplest form.}
      \label{fig:autoencoder}
  \end{figure}
  
  Autoencoders in such form are used for two distinct purposes:
  \begin{itemize}
-     \item auto-discover in the inputs hidden symmetries or underlying correlations, which can be used, for example, in lossy compression scheme or to drive understanding on the inputs themselves;
-     \item since the network is trained on a specific data sample, it will minimize the difference outputs vs inputs on that specific dateaset. Once the same network is presented with 
+     \item auto-discover in the inputs hidden symmetries or underlying correlations, which can be used, for example, in lossy compression~\cite{compression} scheme or to drive understanding on the inputs themselves; % https://arxiv.org/abs/1703.00395
+     \item since the network is trained on a specific data sample, it will minimize the difference outputs vs inputs on that specific dataset. Once the same network is presented with "different" data, it is expected to fail to reproduce the inputs at the outputs; hence, it can be used to detect anomalous inputs, as important for the detection of not expected features, for example in medical imaging ~\cite{anomalymed}. % https://arxiv.org/pdf/2004.03271.pdf
  \end{itemize}
  
+ Varational autoencoders 
 
 \subsubsection{Generative Adversarial Networks}
+Generative Adversarial Networks (GANs) are a recent~\cite{goodfellow} class of networks designed to reproduce the behaviour of complex systems without an explicit programming.
+
+\begin{figure}[h]
+     \centering
+     \includegraphics[width=0.95\textwidth]{images/gan.png}
+     \caption{The structure of a simple GAN.}
+     \label{fig:gan}
+ \end{figure}
+
+The methodology (see Figure~\ref{fig:gan} is to put in competition the reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is random. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B winning if it can convince C its response is the real one; in the opposite case, C wins.
+The tension between the two networks pushed the network B to generate outputs, which are indistinguishable from the real data / the output algorithms. B and C are generic networks, with Convolutional neural structures mostly used.
+
+GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, 
+
 \subsubsection{Graph Networks}
 
 
