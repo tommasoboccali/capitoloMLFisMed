@@ -118,15 +118,18 @@ Generative Adversarial Networks (GANs) are a recent~\cite{goodfellow} class of n
 The methodology (see Figure~\ref{fig:gan} is to put in competition the reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is random. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B winning if it can convince C its response is the real one; in the opposite case, C wins.
 The tension between the two networks pushed the network B to generate outputs, which are indistinguishable from the real data / the output algorithms. B and C are generic networks, with Convolutional neural structures mostly used.
 
-GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the capability to reproduce the showering of particles in calorimeters~\cite{atlascalogan, cmscalogan}, or the famous generation of realistic faces~\cite{faces}
+GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the capability to reproduce the showering of particles in calorimeters~\cite{atlascalogan, cmscalogan}, the famous generation of realistic faces~\cite{faces}, or for the automatic segmentation of medical images~\cite{ganmed}.
 
 % http://cds.cern.ch/record/2680531/files/ATL-SOFT-PROC-2019-007.pdf
 % https://journals.aps.org/prd/pdf/10.1103/PhysRevD.97.014021
 % https://arxiv.org/pdf/1807.01954.pdf
 % https://thispersondoesnotexist.com/
+% https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.13458
 
 \subsubsection{Graph Networks}
-
-
+In a category of problems, the task is to discover the relations between objects; think for example of the segmentation of medical images, where it has to be understood whether certain areas are part of a specific organs, or of clusterization algorithms in many science realms.
+The most used  network architecture for these use cases is a Graph Neural Network (GNN, \cite{gnn}).
+% http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1015.7227&rep=rep1&type=pdf
+In a GNN, nodes (representing objects) and edges (representing connections between nodes) are the basic entities, and the training process aims to correctly categorize the nodes, while at the same time assessing the strength of each connection.
 
 
