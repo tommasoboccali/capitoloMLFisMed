@@ -86,6 +86,7 @@ The CNNs just described are a type of \emph{stateless} network, in which the out
 In simulation processes, the feature is often utilized when the signals from a non fixed number of inputs (i.e. the incoming particles to a volume) must be piled up in a coherent way: the inputs per each particle are presented to the network, with a specific input pattern which may or may not be used to signal the end of the sequence. %A large class of RNNs can be better understood via a process called unrolling, in which the internal memomemory 
 
 \subsection{Generative Models}
+\label{subseq:gan}
 The networks popular up to 10 years ago were mostly useful during a decision process, such has categorizing inputs (signal vs background, for example) or counting and defining specific regions inside it (segmentation, counting of lesions, etc).
 
 In order to be applied to Monte Carlo simulations, instead, the capability to produce ("generate") an output as close as possible to reality, or to a more standard algorithm. In order to do this, different network topologies and strategies for training are relevant.

@@ -4,17 +4,27 @@
 \subsection{Emulation of radiation-matter interactions}
 %tommaso
 % computational cost of full fledged simulations; their not complete ability to match data
+
+DOES THIS GO TO THE INITIAL PART OF THE SECTION???
 One of the most complex tasks in Monte Carlo simulations involving the use of detectors (medical apparatuses, particle physics detectors) lies in the dual need of being able to optimize the design before detector construction, and to simulate the behavior under working conditions after the setup has been prepared.
 In both cases, unless the setup is very similar to existing detectors, extensive Monte Carlo simulations of the expected detector capabilities are the widely used solutions. Various such tools exist (Geant4\cite{g4}, Fluka\cite{fluka}, MCNPX\cite{MCNPX})
 % Geant4, Fluka, MCNPX: https://doi.org/10.1063/1.2720459
 , with different application regimes and specific utilization patterns. as a general rule, these implement iteratively basic radiation-matter low-level processes to a knowledge of the detector setup, including materials, geometry and  XXX; as such, they incur into two general limits:
 \begin{itemize}
-\item a scarce capability to be tuned to experimental results, if not by changing the basic modelling of the processes;
+\item a scarce capability to be tuned to experimental results, by changing the basic modelling of the processes;
 \item a varge to very large need for computational resources, given the iteration oriented approach and the need to increase the level of iterations in order to obtain a better precision and adherence to data.
 \end{itemize}
 
 Both limitations can in principle be overridden via the use of Artificial Intelligence oriented tools.
-In presence of experimental data, the response of the AI system can be tuned to that without any 
+In presence of experimental data, the response of the AI system can be tuned to that without any explicit modelling of the physics processes; speed can be vastly improved by the change from iterative-based computations to standard Deep Learning matrix algebra, with intrinsic capabilities for high perfromance processing on, for example, GPU systems.
+
+As an exmaple we want to consider here CaloGan\cite{calogan}, an attempt to reproduce the details of radiation-matter interactions in the complex setup of segmented (3 layers) electromagnetic calorimeters.
+A generative Adversarial Network, as those presented in Section~\ref{subsec:gan}, is used in conjunction with an as much-as-accurate as possible Geant4 simulation of the detector setup. The generator side accepts in input input particle 4-momentum, ad after the passage through quite standard convolutional(matching the detector response as 2-D images) and dense layers, the output is compared with Geant4 simulations of a particle with the same parameters.  The training optimizes the energy deposition per layer and per 2-D transverse cell, in a way in principle suited also for using real data in input. Results are very encouraging, even in a detector scenario which can be considered as extreme: not only the quantities of direct training are well reproduced, but also secondary and derived quantities like shower shapes are in most cases well described.
+
+ADD DISCUSSION and PLOT
+
+A second similar attempt, called 
+
 
 
 \subsection{Emulation of detector responses}
