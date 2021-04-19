@@ -2,6 +2,7 @@
 \subsection{Emulation of electromagnetic interaction models}
 \subsection{Emulation of low energy nuclear interaction models}
 \subsection{Emulation of radiation-matter interactions}
+\label{subsec:interactions}
 %tommaso
 % computational cost of full fledged simulations; their not complete ability to match data
 
@@ -23,9 +24,13 @@ A generative Adversarial Network, as those presented in Section~\ref{subsec:gan}
 
 ADD DISCUSSION and PLOT
 
-A second similar attempt, called 
 
 
+A second similar attempt, applied to the not-yet existing CLIC proposed emectromagnetic and hadronica calotimeter, is presented in~\cite{3dgan}, with the goal to directly reproduce 3-D signals in a high granular calorimenter. The reference dataset, in absence of real data, is has the form of Geant4 generated showers sampled in a 25x25x25 cells around the impinging particle.
+% https://doi.org/10.1051/epjconf/201921402010
+Figure~\ref{fig:3dgan_shower_longitudinal} shows the longitudinal shower shapes for 100 GeV electrons in the emectomagnetic part of the calorimeter comapred with detailed Geant4 simulations. The level of agreement is very satisfactory.
+
+In sections~\ref{subsec:speed} and ~\ref{subsec:physical} we will discuss about the speed gain with respect to standard methods, and solutions and needs to prevent unphysical results.
 
 \subsection{Emulation of detector responses}
 %tommaso
