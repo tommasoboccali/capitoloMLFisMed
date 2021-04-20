@@ -20,9 +20,6 @@ Fig~\ref{tab:speed}: Geant4 vs GAN performance under various setups, as extracte
 \label{tab:speed}
 \end{center}
 
-
-
-
 \section{Response to unexpected (untrained) signals}
 \section{Unphysical responses and how to impose physical constraints}
 \label{subsec:physical}
@@ -30,7 +27,10 @@ AI inspired tools are a mathematical solution to problems we have problems solvi
 An important difference with respect to standard "human-written" code is impossibility to impose at algorithmic level precise conservation laws, such as the conservation of energy and momentum.
 There is no guarantee a ML system will conserve them, since their validity is not implemented in any explicit form.
 
-In most of the cases shown in Section~\ref{sec:examples} the strict conservation (for example) of energy in particle showering into calorimeters does not need to be exact, since in the transfer  between the energy in the impinging particle and the final products is in any case approximate due to effects of leaking, and smoothed by the detector resolution. In cases like this, while the training tries to  match the "cell by cell" energy deposition, there is no explicit request that that the total energy deposited in the calorimeter matches the precise simulation. In principle, a loss function designed to have the minimum in when all the cells have the "expected" energy would suffice, but experience (and somehow common sense) shows that by adding to the loss function an explicit term tending to the conservation of total energy, like in Eqn. (2) in~\cite{calogan}.
+In most of the cases shown in Section~\ref{sec:examples} the strict conservation (for example) of energy in particle showering into calorimeters does not need to be exact, since in the transfer  between the energy in the impinging particle and the final products is in any case approximate due to effects of leaking, and smoothed by the detector resolution. In cases like this, while the training tries to  match the "cell by cell" energy deposition, there is no explicit request that that the total energy deposited in the calorimeter matches the precise simulation. In principle, a loss function designed to have the minimum in when all the cells have the "expected" energy would suffice, but experience (and somehow common sense) shows that by adding to the loss function an explicit term tending to the conservation of total energy, like in Eqn. (2) in~\cite{calogan}, constrains can implemented even if not in exact form. This solution is called ``soft'' precisely for this reason. .
+The relative weight of the various terms in the loss functions are somehow arbotrary, and an higher weight to the part tending to the constraint (not really imposing it!) represents the developer desire to have it more precisely maintained, even if never exaclty.
 
+A different approach, as  presented in ~\cite{salzmann}, tries to implement instead ``hard'' and exact constraints on the outputs during the training  phase, the mathematical complexity and the time needed increase, such as to advice the use of (eventually up-weighted)  ``soft'' constraints in any case.
 
+% https://arxiv.org/pdf/1706.02025.pdf
 %example from https://journals.aps.org/prd/pdf/10.1103/PhysRevD.97.014021 : eqn (2) and following
