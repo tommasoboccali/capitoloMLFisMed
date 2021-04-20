@@ -1,5 +1,5 @@
 \section{Strong and weak points about Neural Networks applications for Monte Carlo simulations}
-\section{Speed, accuracy and reliability}
+\subsection{Speed, accuracy and reliability}
 \label{subsec:speed}
 As described in Section~\ref{subsec:interactions}, one of the main advantage of AI inspired systems, when compared to more standard simulation algorithms, is a potential speed-up without necessarily impacting performance.
 The improvement comes from the nature of feed-forwards Neural Networks used at inference time, which are described as a series of matrix multiplication of fixed length\footnote{This is not strictly  valid for some types of recurrent networks, where the recurrence can introduce an indetermination in the sequence of mathematical operations.}, without access to any data structure apart from the inputs and the weights. Today's processors, from CPUs to GPUs to TPUs, are very efficient in processing matrix algebra calculations; this reflects diretly to short processing times.
@@ -20,8 +20,8 @@ Fig~\ref{tab:speed}: Geant4 vs GAN performance under various setups, as extracte
 \label{tab:speed}
 \end{center}
 
-\section{Response to unexpected (untrained) signals}
-\section{Unphysical responses and how to impose physical constraints}
+\subsection{Response to unexpected (untrained) signals}
+\subsection{Unphysical responses and how to impose physical constraints}
 \label{subsec:physical}
 AI inspired tools are a mathematical solution to problems we have problems solving algorithmically, either because too difficult or too slow.
 An important difference with respect to standard "human-written" code is impossibility to impose at algorithmic level precise conservation laws, such as the conservation of energy and momentum.
