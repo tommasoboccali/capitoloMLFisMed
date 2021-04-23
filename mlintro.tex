@@ -1,5 +1,5 @@
 \section{Introduction to Neural Networks}
-Neural Networks are a specific branch of the Artificial Intelligence (\emph{AI}) domain in computer science.
+Neural Networks are a specific branch of the Artificial Intelligence (AI) domain in computer science.
 They get their inspiration from the fact that humans are evidently able to fulfill complex tasks; hence, by replicating the low-level mechanisms of the human brain on computing systems, one can potentially construct high level algorithms with similar capabilities.
 
 \subsection{The human brain}
@@ -21,9 +21,9 @@ Neglecting any functional description, the human brain can be described as an or
         \end{subfigure}
 
 \end{figure}
- With our current understanding, the neurons are the units performing basic "operations" within the human brain, and their aggregated response is responsible for the high-level behaviour typical of humans.
+ In our current understanding, the neurons are the units performing basic "operations" within the human brain, and their aggregated response is responsible for the high-level behaviour typical of humans.
  A neuron, as sketched in Figure~\ref{fig:neuron}, is composed of three main units: a number of dendrites, the soma (the cell body), and an axion; the total size largely varies between different types of neurons; the neurons used for cognitive functions (as those in the grey matter of the brain) are usually short, XX $\mu$m.
-Functionally, a neuron is able to generate an electric response on the axion (\emph{output}), depending on the electrical potential present at the synapses (\emph{inputs}) present on the dendrites, generating a quite low-level response mechanism. Neurons are \emph{chained} by connections between axions and dendrites, generating a mesh in which N neurons are connected via M synapses.
+Functionally, a neuron is able to generate an electric response on the axion (\emph{output}), depending on the electrical potential present at the synapses (\emph{inputs}) present on the dendrites. Neurons are \emph{chained} by connections between axions and dendrites, generating a mesh in which N neurons are connected via M synapses.
  The high-level response of the human brain to stimuli is understood to come from the complexity of such mesh, with a standard human brain featuring $~10^{11}$ neurons each with $~7000$ synapses, for a total of $~10^{15}$ "connections".
 
  In literature various models of the neuron behavior have been proposed~\cite{neuronbe1, neuronbe2, neuronbe3}, %https://en.wikipedia.org/wiki/Biological_neuron_model
@@ -44,6 +44,7 @@ Functionally, a neuron is able to generate an electric response on the axion (\e
    \label{eq:artificialneuron}
  \end{equation}
 where $w_i$ are weights defined by chemical potentials at the synapses, and the function $f$ wants to model the non linearity of response of biological neurons with the \emph{inputs}; on top of this, the function $f$ is needed in the mathematical model in order to allow the description of non linear phenomena~\cite{nonlinearitytheorem}. The perceptron~\cite{perceptron}, one of the first models used in literature for Neural Networks, uses a very similar model, with a simplified $f$ function which is simply
+% nonlinearitytheorem https://doi.org/10.1016/0893-6080(91)90009-T
 \begin{equation}
   f(\vec{x})= \begin{cases}
                 1 &  \text{if}\  \sum_{i=1}^{N} w_i x_i >0 \\
@@ -53,26 +54,28 @@ where $w_i$ are weights defined by chemical potentials at the synapses, and the 
 Today, two small modifications are typical when using Neural Networks:
 \begin{itemize}
 \item the addition of a further synapse $x_0$ which is always 1, as a bias to the system; its weight is referred to as $x_0$ or $b$ (as in \emph{bias}).
-\item the use of continuous $f$ non linear functions, as the logistic~\cite{logistic} or the hyperbolic~\cite{hyperbolic} functions.
+\item the use of continuous $f$ non linear functions, as  logistic~\cite{logistic} or hyperbolic~\cite{logistic} functions.
 \end{itemize}
-
-Neural networks are obtained by combining multiple neurons in \emph{networks}, usually in a layered structure: one layer is used to map the inputs, a few/many layers are \emph{hidden}, and a single layer used to to map the outputs. On top of that, more complex neurons an be used, for example including a "memory" cell, or presenting a recurrent behavior by reusing its output as one of the inputs. A full description of all the type of neurons and networks is beyond the scope of this chapter; in the following, the ones most relevant to Monte Carlo simulations will be presented wit more detail. For reference, still, a complete classification of currently relevant neural networks is shown in Figure~\ref{fig:types}.
+% logistic: https://en.wikipedia.org/wiki/Logistic_function
+% hyperbolic
+Neural networks are designed by combining multiple neurons in \emph{networks}, usually in a layered structure: one layer is used to map the inputs, a few/many layers are \emph{hidden}, and a single layer used to to map the outputs. On top of that, more complex neurons can be used, for example including a "memory" cell, or presenting a recurrent behavior by reusing its output as one of the inputs. A full description of all the type of neurons and networks is beyond the scope of this chapter; in the following, the ones most relevant to Monte Carlo simulations will be presented with more detail. For reference, still, a complete classification of currently relevant neural networks is shown in Figure~\ref{fig:types}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{images/types.png}
     \caption{Types of neurons and neural networks currently relevant in literature (Copyright F. van Veen 2016).}
     \label{fig:types}
 \end{figure}
+
 As clearly visible in the figure, some network topologies have an high number of hidden layers. While the Universal Approximation Theorem~\cite{nonlinearitytheorem} states that under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be "deep" (i.e. with many hidden layers). This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with a more identifiable and logical role. Hence, relevant networks in today's science tend to be deep.
 
 The typical utilization pattern for a majority of network topologies is to feed them as input a large set of data representing the problem of interest, be it a medical image, a set of features or any output from the instrumentation, and at the same time provide the "expected output" from a so-called training set. 
 
 In the simplest type of networks, the response from the neurons in the hidden and the final layers are considered in sequence (inputs to outputs), with each layer \emph{feeding} the following layers; hence the name Feed Forward Neural Networks (FFNNs).
 
-During the training, the network adjusts its internal free degrees of freedom (the weights $w_i^j$ in equation~\ref{eq:artificialneuron}, extended to the $j$ neurons in the various layers) to better reproduce the desired answers, via minimization procedures which can be either numerical or analytical.
+During the training, the network adjusts its internal free degrees of freedom (the weights $w_i^j$ in equation~\ref{eq:artificialneuron}, extended to the $j$ neurons in the various layers) to better reproduce the desired answers, via minimization procedures which can be either numerical or analytical and involves the definition of a loss function to be explicitly minimized. Typical loss function can be simple weighted differences between the networks results and "expected results", but functional forms like cross entropy and mean square errors are more typical~\cite{lossfunctions}.
 
 What has just been described is the training process for \emph{supervised} Neural networks, which rely on an externally provided "truth" to adjust for optimal performance, without having any a-priori knowledge of the physical process they want to reproduce.
-Other topologies describe instead the \emph{unsupervised} Neural Networks, in which the training process just implies the utilization of datasets without the need to provide the correct answers". Examples of such networks will be provided in Section~\ref{sec:unsupervised}.
+Other topologies describe instead the \emph{unsupervised} Neural Networks, in which the training process just implies the utilization of datasets without the need to provide the correct answers (which can be unknown). Examples of such networks will be provided in Section~\ref{sec:unsupervised}.
 
 \subsection{Convolutional networks}
 Convolutional networks (CNNs) are a useful subset of neural networks, which exhibit peculiar characteristics of being space invariant with respect of the inputs.
@@ -95,9 +98,9 @@ In order to be applied to Monte Carlo simulations, instead, the capability to pr
 
 \subsubsection{Auto-Encoders and Variational Auto-Encoders}
 \label{sec:unsupervised}
-The autoencoders are a family of unsupervised Neural Networks designed to learn a lower dimensional representation (say N dimensions) out of a set of data (with M dimensions, M \textgreater N). The N dimension representation ("latent space") can be seen as coming from an "understanding" of internal patterns and correlations, and thus as a Neural Network which has been "discovering" these underlying patterns in the input data.
+The autoencoders are a family of unsupervised Neural Networks designed to learn a lower dimensional representation (say N dimensions) out of a set of data (with M dimensions, M\textgreater N). The N dimension representation ("latent space") can be seen as coming from an "understanding" of internal patterns and correlations, and thus as a Neural Network which has been "discovering" these underlying patterns in the input data.
 
-The easiest form of autoencoder is one in which the number of inputs and outputs equals to M, and where there is a layer at dimensionality N. The training is obtained by forcing the network to reproduce as close a possible the input features at the output layer, thus requesting the N-dimension space to be as sufficient as possible to represent the M-dimension inputs (see Figure~\ref{fig:autoencoder}).
+The easiest form of autoencoder is one in which the number of inputs and outputs equals to M, and where there is a layer at dimensionality N. The training is obtained by forcing the network during training to reproduce as close a possible the input features at the output layer, thus requesting the N-dimension space to be as sufficient as possible to represent the M-dimension inputs (see Figure~\ref{fig:autoencoder}).
 
 \begin{figure}[h]
      \centering
@@ -130,7 +133,7 @@ Generative Adversarial Networks (GANs) are a recent~\cite{goodfellow} class of n
      \label{fig:gan}
  \end{figure}
 
-The methodology (see Figure~\ref{fig:gan} implies putting in competition the reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is random. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B winning if it can convince C its response is the real one; in the opposite case, C wins.
+The method (see Figure~\ref{fig:gan}) implies putting in competition the reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is random. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B winning if it can convince C its response is the real one; in the opposite case, C wins.
 The tension between the two networks pushes the network B to generate outputs which are indistinguishable from the real data / the output of the  algorithms. B and C are generic networks, with Convolutional neural structures mostly used.
 
 GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the capability to reproduce the showering of particles in calorimeters~\cite{atlascalogan, cmscalogan}, the famous generation of realistic faces~\cite{faces}, or for the automatic segmentation of medical images~\cite{ganmed}.
@@ -142,7 +145,7 @@ GANs are more and more used when in the need for replicating the behaviour of a 
 % https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.13458
 
 \subsubsection{Graph Networks}
-In a category of problems, the task is to discover the relations between objects; think for example of the segmentation of medical images, where it has to be understood whether certain areas are part of a specific organs, or of clusterization algorithms in many science realms.
+In a category of problems, the task is to discover the relations between objects; in the  segmentation of medical images, for example, there is the need to understand whether certain areas are part of a specific organs. Clusterization algorithms in many science realms is another example~\cite{clusterization}.
 The most used  network architecture for these use cases is a Graph Neural Network (GNN, \cite{gnn}).
 % http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1015.7227&rep=rep1&type=pdf
 In a GNN, nodes (representing objects) and edges (representing connections between nodes) are the basic entities, and the training process aims to correctly categorize the nodes, while at the same time assessing the strength of each connection.
