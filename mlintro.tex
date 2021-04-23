@@ -68,6 +68,10 @@ Neural networks are designed by combining multiple neurons in \emph{networks}, u
 
 As clearly visible in the figure, some network topologies have an high number of hidden layers. While the Universal Approximation Theorem~\cite{nonlinearitytheorem} states that under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be "deep" (i.e. with many hidden layers). This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with a more identifiable and logical role. Hence, relevant networks in today's science tend to be deep.
 
+% nonlinearitytheorem     Recommended Citation
+%Kawaguchi, Kiyoshi, "A multithreaded software model for backpropagation neural network applications" (2000). ETD Collection for %University of Texas, El Paso. AAIEP05411.
+%https://scholarworks.utep.edu/dissertations/AAIEP05411
+
 The typical utilization pattern for a majority of network topologies is to feed them as input a large set of data representing the problem of interest, be it a medical image, a set of features or any output from the instrumentation, and at the same time provide the "expected output" from a so-called training set. 
 
 In the simplest type of networks, the response from the neurons in the hidden and the final layers are considered in sequence (inputs to outputs), with each layer \emph{feeding} the following layers; hence the name Feed Forward Neural Networks (FFNNs).
