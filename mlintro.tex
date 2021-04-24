@@ -22,11 +22,11 @@ Neglecting any functional description, the human brain can be described as an or
 
 \end{figure}
  In our current understanding, the neurons are the units performing basic "operations" within the human brain, and their aggregated response is responsible for the high-level behaviour typical of humans.
- A neuron, as sketched in Figure~\ref{fig:neuron}, is composed of three main units: a number of dendrites, the soma (the cell body), and an axion; the total size largely varies between different types of neurons; the neurons used for cognitive functions (as those in the grey matter of the brain) are usually short, XX $\mu$m.
+ A neuron, as sketched in Figure~\ref{fig:neuron}, is composed of three main units: a number of dendrites, the soma (the cell body), and an axion; the total size largely varies between different types of neurons; the neurons used for cognitive functions (as those in the grey matter of the brain) are usually short, of the order of 10 mm~\cite{neuronlength}.
 Functionally, a neuron is able to generate an electric response on the axion (\emph{output}), depending on the electrical potential present at the synapses (\emph{inputs}) present on the dendrites. Neurons are \emph{chained} by connections between axions and dendrites, generating a mesh in which N neurons are connected via M synapses.
  The high-level response of the human brain to stimuli is understood to come from the complexity of such mesh, with a standard human brain featuring $~10^{11}$ neurons each with $~7000$ synapses, for a total of $~10^{15}$ "connections".
 
- In literature various models of the neuron behavior have been proposed~\cite{neuronbe1, neuronbe2, neuronbe3}, %https://en.wikipedia.org/wiki/Biological_neuron_model
+ In literature various models of the neuron behavior have been proposed~\cite{neuronbe1, neuronbe2}, 
  here we will focus on the simplest yet most simple to implement in computer systems~\cite{artificialneuron} (see Figure~\ref{fig:artificialneuron}): %https://en.wikipedia.org/wiki/Artificial_neuron
  
  \begin{figure}[h]
@@ -44,7 +44,6 @@ Functionally, a neuron is able to generate an electric response on the axion (\e
    \label{eq:artificialneuron}
  \end{equation}
 where $w_i$ are weights defined by chemical potentials at the synapses, and the function $f$ wants to model the non linearity of response of biological neurons with the \emph{inputs}; on top of this, the function $f$ is needed in the mathematical model in order to allow the description of non linear phenomena~\cite{nonlinearitytheorem}. The perceptron~\cite{perceptron}, one of the first models used in literature for Neural Networks, uses a very similar model, with a simplified $f$ function which is simply
-% nonlinearitytheorem https://doi.org/10.1016/0893-6080(91)90009-T
 \begin{equation}
   f(\vec{x})= \begin{cases}
                 1 &  \text{if}\  \sum_{i=1}^{N} w_i x_i >0 \\
@@ -54,10 +53,9 @@ where $w_i$ are weights defined by chemical potentials at the synapses, and the 
 Today, two small modifications are typical when using Neural Networks:
 \begin{itemize}
 \item the addition of a further synapse $x_0$ which is always 1, as a bias to the system; its weight is referred to as $x_0$ or $b$ (as in \emph{bias}).
-\item the use of continuous $f$ non linear functions, as  logistic~\cite{logistic} or hyperbolic~\cite{logistic} functions.
+\item the use of continuous $f$ non linear functions, as  logistic or hyperbolic~\cite{logistic} functions.
 \end{itemize}
 % logistic: https://en.wikipedia.org/wiki/Logistic_function
-% hyperbolic
 Neural networks are designed by combining multiple neurons in \emph{networks}, usually in a layered structure: one layer is used to map the inputs, a few/many layers are \emph{hidden}, and a single layer used to to map the outputs. On top of that, more complex neurons can be used, for example including a "memory" cell, or presenting a recurrent behavior by reusing its output as one of the inputs. A full description of all the type of neurons and networks is beyond the scope of this chapter; in the following, the ones most relevant to Monte Carlo simulations will be presented with more detail. For reference, still, a complete classification of currently relevant neural networks is shown in Figure~\ref{fig:types}.
 \begin{figure}[h]
     \centering
@@ -86,6 +84,18 @@ Convolutional networks (CNNs) are a useful subset of neural networks, which exhi
 
 They are particularly interesting in the realm of Monte Carlo simulations, since the space invariance is a valuable characteristics: for example, a shower from an hadronic particle into a material, when far from the edges, does not depend on the specific entry point nor on its direction.
 CNNs are used with success in categorization problems, where typical structures must be discovered into a set of input data: a typical example is the identification of lesions in medical imaging, trained on reported images by clinicians ~\cite{cnnmedical}, as depicted in Figure~\ref{fig:cnnsmedical}.
+
+
+ \begin{figure}[h]
+    \centering
+    \hfill
+        %\includegraphics[width=0.9\textwidth]{images/artificialneuron.png}
+     \caption{ALE SERVE UN ESEMPIO.}
+     \label{fig:cnnsmedical}
+
+\end{figure}
+
+
 Technically, CNNs use basic neurons as explained in Section~\ref{subsect:brain}, with those in the hidden layers fed by small portions of the inputs per iteration, thus realizing spatial independence, for example. Multiple application of several convolutional layers drive to an overall analysis on the inputs, and to the final outputs.
 
 \subsection{Recurrent networks}
@@ -140,7 +150,7 @@ Generative Adversarial Networks (GANs) are a recent~\cite{goodfellow} class of n
 The method (see Figure~\ref{fig:gan}) implies putting in competition the reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is random. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B winning if it can convince C its response is the real one; in the opposite case, C wins.
 The tension between the two networks pushes the network B to generate outputs which are indistinguishable from the real data / the output of the  algorithms. B and C are generic networks, with Convolutional neural structures mostly used.
 
-GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the capability to reproduce the showering of particles in calorimeters~\cite{atlascalogan, cmscalogan}, the famous generation of realistic faces~\cite{faces}, or for the automatic segmentation of medical images~\cite{ganmed}.
+GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the capability to reproduce the showering of particles in calorimeters~\cite{calogan}, the famous generation of realistic faces~\cite{faces}, or for the automatic segmentation of medical images~\cite{ganmed}.
 
 % http://cds.cern.ch/record/2680531/files/ATL-SOFT-PROC-2019-007.pdf
 % https://journals.aps.org/prd/pdf/10.1103/PhysRevD.97.014021
