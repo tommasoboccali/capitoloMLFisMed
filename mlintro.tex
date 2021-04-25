@@ -155,7 +155,7 @@ The loss functions of AEs is a ``distance'' between the input element and the ge
 
 There is no guarantee that the latent space gets organized with respect to the input features. However, it has been shown \cite{bvae} that increasing the coefficient of the KL term in the sum of the two loss function addenda, increases the probability that the VAE learns a disentagled representation of the input. This hyper parameter is usually referred as $\beta$ and this modification of the VAE, $\beta$-VAE.
 
-VAEs tend to produce outputs blurred with respect to inputs, however, they have the great advantage that it is possible, especially with $\beta$-VA, to control the features of the generated output.
+VAEs tend to produce outputs blurred with respect to inputs, however, they have the great advantage that it is possible, especially with $\beta$-VA, to control the features of the generated output and to interpolate with continuity between two input samples.
 
 ...
 ...
@@ -174,7 +174,9 @@ Generative Adversarial Networks (GANs) are a recent~\cite{goodfellow} class of n
 The method (see Figure~\ref{fig:gan}) implies putting in competition the reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is random. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B winning if it can convince C its response is the real one; in the opposite case, C wins.
 The tension between the two networks pushes the network B to generate outputs which are indistinguishable from the real data / the output of the  algorithms. B and C are generic networks, with Convolutional neural structures mostly used.
 
-GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the capability to reproduce the showering of particles in calorimeters~\cite{calogan}, the famous generation of realistic faces~\cite{faces}, or for the automatic segmentation of medical images~\cite{ganmed}.
+GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the famous generation of realistic faces~\cite{faces}, the capability to reproduce the showering of particles in calorimeters~\cite{calogan}, or for 
+%the automatic segmentation of medical images~\cite{ganmed}.
+for beam source modelling in Radiation Therapy linacs~\cite{Sarrut2019}
 
 % http://cds.cern.ch/record/2680531/files/ATL-SOFT-PROC-2019-007.pdf
 % https://journals.aps.org/prd/pdf/10.1103/PhysRevD.97.014021
