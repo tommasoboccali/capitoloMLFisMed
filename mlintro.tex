@@ -24,11 +24,11 @@ Neglecting any functional description, the human brain can be described as an or
  In our current understanding, the neurons are the units performing basic "operations" within the human brain, and their aggregated response is responsible for the high-level behaviour typical of humans.
  A neuron, as sketched in Figure~\ref{fig:neuron}, is composed of three main units: a number of dendrites, the soma (the cell body), and an axion; the total size largely varies between different types of neurons; the neurons used for cognitive functions (as those in the grey matter of the brain) are usually short, of the order of 10 mm~\cite{neuronlength}.
 Functionally, a neuron is able to generate an electric response on the axion (\emph{output}), depending on the electrical potential present at the synapses (\emph{inputs}) present on the dendrites. Neurons are \emph{chained} by connections between axions and dendrites, generating a mesh in which N neurons are connected via M synapses.
- The high-level response of the human brain to stimuli is understood to come from the complexity of such mesh, with a standard human brain featuring $~10^{11}$ neurons each with $~7000$ synapses, for a total of $~10^{15}$ "connections".
+ The high-level response of the human brain to stimuli is understood to come from the complexity of such mesh, with a standard human brain featuring $~10^{11}$ neurons each with $~7000$ synapses, for a total of $~10^{15}$ ``connections''.
 
  In literature various models of the neuron behavior have been proposed~\cite{neuronbe1, neuronbe2}, 
  here we will focus on the simplest yet most simple to implement in computer systems~\cite{artificialneuron} (see Figure~\ref{fig:artificialneuron}): %https://en.wikipedia.org/wiki/Artificial_neuron
- 
+ %
  \begin{figure}[h]
     \centering
     \hfill
@@ -37,10 +37,10 @@ Functionally, a neuron is able to generate an electric response on the axion (\e
      \label{fig:artificialneuron}
 
 \end{figure}
- 
+ %
  in this model, the \emph{output} $y$ signal at the axion is assumed to be a function of the \emph{inputs} $x_i$ via
  \begin{equation}
-   y = f(\sum_{i=1}^{N} w_i x_i)
+   y = f\left(\sum_{i=1}^{N} w_i x_i\right)
    \label{eq:artificialneuron}
  \end{equation}
 where $w_i$ are weights defined by chemical potentials at the synapses, and the function $f$ wants to model the non linearity of response of biological neurons with the \emph{inputs}; on top of this, the function $f$ is needed in the mathematical model in order to allow the description of non linear phenomena~\cite{nonlinearitytheorem}. The perceptron~\cite{perceptron}, one of the first models used in literature for Neural Networks, uses a very similar model, with a simplified $f$ function which is simply
@@ -64,25 +64,30 @@ Neural networks are designed by combining multiple neurons in \emph{networks}, u
     \label{fig:types}
 \end{figure}
 
-As clearly visible in the figure, some network topologies have an high number of hidden layers. While the Universal Approximation Theorem~\cite{nonlinearitytheorem} states that under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be "deep" (i.e. with many hidden layers). This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with a more identifiable and logical role. Hence, relevant networks in today's science tend to be deep.
+As clearly visible in the figure, some network topologies have an high number of hidden layers. While the Universal Approximation Theorem~\cite{nonlinearitytheorem} states that under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be ``deep'' (i.e. with many hidden layers). This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with a more identifiable and logical role. Hence, relevant networks in today's science tend to be deep.
 
 % nonlinearitytheorem     Recommended Citation
 %Kawaguchi, Kiyoshi, "A multithreaded software model for backpropagation neural network applications" (2000). ETD Collection for %University of Texas, El Paso. AAIEP05411.
 %https://scholarworks.utep.edu/dissertations/AAIEP05411
 
-The typical utilization pattern for a majority of network topologies is to feed them as input a large set of data representing the problem of interest, be it a medical image, a set of features or any output from the instrumentation, and at the same time provide the "expected output" from a so-called training set. 
+The typical utilization pattern for a majority of network topologies is to feed them as input a large set of data representing the problem of interest, be it a medical image, a set of features or any output from the instrumentation, and at the same time provide the ``expected output''
+from a so-called training set. 
 
 In the simplest type of networks, the response from the neurons in the hidden and the final layers are considered in sequence (inputs to outputs), with each layer \emph{feeding} the following layers; hence the name Feed Forward Neural Networks (FFNNs).
 
-During the training, the network adjusts its internal free degrees of freedom (the weights $w_i^j$ in equation~\ref{eq:artificialneuron}, extended to the $j$ neurons in the various layers) to better reproduce the desired answers, via minimization procedures which can be either numerical or analytical and involves the definition of a loss function to be explicitly minimized. Typical loss function can be simple weighted differences between the networks results and "expected results", but functional forms like cross entropy and mean square errors are more typical~\cite{lossfunctions}.
+During the training, the network adjusts its internal free degrees of freedom (the weights $w_i^j$ in equation~\ref{eq:artificialneuron}, extended to the $j$ neurons in the various layers) to better reproduce the desired answers, via minimization procedures which can be either numerical or analytical and involves the definition of a loss function to be explicitly minimized. Typical loss function can be simple weighted differences between the networks results and ``expected results'', but functional forms like cross entropy and mean square errors are more typical~\cite{lossfunctions}.
 
-What has just been described is the training process for \emph{supervised} Neural networks, which rely on an externally provided "truth" to adjust for optimal performance, without having any a-priori knowledge of the physical process they want to reproduce.
+What has just been described is the training process for \emph{supervised} Neural networks, which rely on an externally provided ``truth'' to adjust for optimal performance, without having any a-priori knowledge of the physical process they want to reproduce.
 Other topologies describe instead the \emph{unsupervised} Neural Networks, in which the training process just implies the utilization of datasets without the need to provide the correct answers (which can be unknown). Examples of such networks will be provided in Section~\ref{sec:unsupervised}.
 
 \subsection{Convolutional networks}
 Convolutional networks (CNNs) are a useful subset of neural networks, which exhibit peculiar characteristics of being space invariant with respect of the inputs.
 
-They are particularly interesting in the realm of Monte Carlo simulations, since the space invariance is a valuable characteristics: for example, a shower from an hadronic particle into a material, when far from the edges, does not depend on the specific entry point nor on its direction.
+They are particularly interesting in the realm of Monte Carlo simulations, since the space invariance is a valuable characteristics: for example, 
+%CM farei un esempio piu' vicino all'ambito medico
+%a shower from an hadronic particle into a material, when far from the edges, 
+the energy deposition of a particle into a material
+does not depend on the specific entry point nor on its direction.
 CNNs are used with success in categorization problems, where typical structures must be discovered into a set of input data: a typical example is the identification of lesions in medical imaging, trained on reported images by clinicians ~\cite{cnnmedical}, as depicted in Figure~\ref{fig:cnnsmedical}.
 
 
@@ -99,20 +104,20 @@ CNNs are used with success in categorization problems, where typical structures 
 Technically, CNNs use basic neurons as explained in Section~\ref{subsect:brain}, with those in the hidden layers fed by small portions of the inputs per iteration, thus realizing spatial independence, for example. Multiple application of several convolutional layers drive to an overall analysis on the inputs, and to the final outputs.
 
 \subsection{Recurrent networks}
-The CNNs just described are a type of \emph{stateless} network, in which the output depends only on the inputs presented on the first layer. In Recurrent Neural Networks (RNNs), the response to a specific input feature set also depends on the history of the network, i.e. the inputs presented at prior times; as such, the network presents a sort of "memory", which can be used to correlate multiple inputs in sequence. A typical utilization pattern is in the presence of inputs of variable length, which cannot be estimated \emph{a priori}, like in the analysis of text or speech sequences. 
+The CNNs just described are a type of \emph{stateless} network, in which the output depends only on the inputs presented on the first layer. In Recurrent Neural Networks (RNNs), the response to a specific input feature set also depends on the history of the network, i.e. the inputs presented at prior times; as such, the network presents a sort of ``memory'', which can be used to correlate multiple inputs in sequence. A typical utilization pattern is in the presence of inputs of variable length, which cannot be estimated \emph{a priori}, like in the analysis of text or speech sequences. 
 In simulation processes, the feature is often utilized when the signals from a non fixed number of inputs (i.e. the incoming particles to a volume) must be piled up in a coherent way: the inputs per each particle are presented to the network, with a specific input pattern which may or may not be used to signal the end of the sequence. %A large class of RNNs can be better understood via a process called unrolling, in which the internal memomemory 
 
 \subsection{Generative Models}
 \label{subseq:gan}
 The networks popular up to 10 years ago were mostly useful during a decision process, such has categorizing inputs (signal vs background, for example) or counting and defining specific regions inside it (segmentation, counting of lesions, etc).
 
-In order to be applied to Monte Carlo simulations, instead, the capability to produce ("generate") an output as close as possible to reality, or to a more standard algorithm. In order to do this, different network topologies and strategies for training are relevant.
+In order to be applied to Monte Carlo simulations, instead, the capability to produce (``generate'') an output as close as possible to reality, or to a more standard algorithm. In order to do this, different network topologies and strategies for training are relevant.
 
 %It needs to be highlighted that none of the methods described in this chapter have any intrinsic knowledge of the physics involved in the simulation processes. They are "trained" on external data, which needs to be accurate as possible. While to some extent it is possible to think of a training process using data, in practice the data samples and setups to ensure a generic training is huge, and not easy to obtain in practice. Hence, standard training samples are usually provided via "old school" detailed simulation toolkits, like Geant4~\cite{g4} or FLUKA~\cite{fluka}; it is important to notice that the advent of Machine Learning techniques for Monte Carlo simulations does not imply that the latter will be less needed, on the contrary it will remain fundamental to have  understood and well tuned reference tools to be used to train AI inspired tools.
 
 \subsubsection{Auto-Encoders and Variational Auto-Encoders}
 \label{sec:unsupervised}
-The autoencoders are a family of unsupervised Neural Networks designed to learn a lower dimensional representation (say N dimensions) out of a set of data (with M dimensions, M\textgreater N). The N dimension representation ("latent space") can be seen as coming from an "understanding" of internal patterns and correlations, and thus as a Neural Network which has been "discovering" these underlying patterns in the input data.
+The autoencoders are a family of unsupervised Neural Networks designed to learn a lower dimensional representation (say N dimensions) out of a set of data (with M dimensions, M\textgreater N). The N dimension representation (``latent space'') can be seen as coming from an "understanding" of internal patterns and correlations, and thus as a Neural Network which has been "discovering" these underlying patterns in the input data.
 
 The easiest form of autoencoder is one in which the number of inputs and outputs equals to M, and where there is a layer at dimensionality N. The training is obtained by forcing the network during training to reproduce as close a possible the input features at the output layer, thus requesting the N-dimension space to be as sufficient as possible to represent the M-dimension inputs (see Figure~\ref{fig:autoencoder}).
 
