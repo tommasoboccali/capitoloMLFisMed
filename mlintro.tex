@@ -117,11 +117,11 @@ In order to be applied to Monte Carlo simulations, instead, the capability to pr
 
 \subsubsection{Auto-Encoders and Variational Auto-Encoders}
 \label{sec:unsupervised}
-The autoencoders are a family of unsupervised Neural Networks designed to learn a lower dimensional representation (say N dimensions) out of a set of data (with M dimensions, M\textgreater N). The N dimension representation (``latent space'') can be seen as coming from an "understanding" of internal patterns and correlations, and thus as a Neural Network which has been "discovering" these underlying patterns in the input data.
+The autoencoders are a family of unsupervised Neural Networks designed to learn a lower dimensional representation (say N dimensions) out of a set of data (with M dimensions, M\textgreater N). The N dimension representation (``latent space'') can be seen as coming from an ``understanding'' of internal patterns and correlations, and thus as a Neural Network which has been ``discovering'' these underlying patterns in the input data.
 
 The easiest form of autoencoder is one in which the number of inputs and outputs equals to M, and where there is a layer at dimensionality N. The training is obtained by forcing the network during training to reproduce as close a possible the input features at the output layer, thus requesting the N-dimension space to be as sufficient as possible to represent the M-dimension inputs (see Figure~\ref{fig:autoencoder}).
 
-\begin{figure}[h]
+\begin{figure}[htb]
      \centering
      \includegraphics[width=0.95\textwidth]{images/autoencoder.png}
      \caption{An autoencoder in its simplest form.}
@@ -131,12 +131,31 @@ The easiest form of autoencoder is one in which the number of inputs and outputs
  Autoencoders in such form are used for two distinct purposes:
  \begin{itemize}
      \item auto-discover in the inputs hidden symmetries or underlying correlations, which can be used, for example, in lossy compression~\cite{compression} scheme or to drive understanding on the inputs themselves; % https://arxiv.org/abs/1703.00395
-     \item since the network is trained on a specific data sample, it will minimize the difference outputs vs inputs on that specific dataset. Once the same network is presented with "different" data, it is expected to fail to reproduce the inputs at the outputs; hence, it can be used to detect anomalous inputs, as important for the detection of not expected features, for example in medical imaging ~\cite{anomalymed} or High Energy Physics events ~\cite{anomalyhep}. 
+     \item since the network is trained on a specific data sample, it will minimize the difference outputs vs inputs on that specific dataset. Once the same network is presented with ``different'' data, it is expected to fail to reproduce the inputs at the outputs; hence, it can be used to detect anomalous inputs, as important for the detection of not expected features, for example in medical imaging ~\cite{anomalymed} or High Energy Physics events ~\cite{anomalyhep}. 
      % https://arxiv.org/pdf/2004.03271.pdf
      % https://arxiv.org/abs/2005.01598
  \end{itemize}
  
-Variational AutoEncoders (VAEs) are autoencoders which can be used to \emph{generate} realistic data, matching as close as possible the  training set. The naive way to generate data from a standard autoencoder is to generate random configurations in the latent space of dimensionality N, and decode it with the rightmost part of Figure~\ref{fig:autoencoder} in order to obtain a M dimensional configuration which is "generated" by the network. In practice, there is no guarantee that the latent space gets organized in a way that all its points are used in the decoding/encoding process. This is where Variational Autoencoders differ: it is explicitly trained in such a way to ensure that the latent space is apt for a generative process.
+%CM: aggiungerei piu' cose sulle VAE che sono a mio avviso la categoria di algoritmi piu' interessanti per il MC 
+Auto-Encoders are only able to reproduce the elements of the training set but not to interpolate among them. Kingma and Welling \cite{vae} introduced the Variational Auto-Encoder (VAE) class of algorithms. It would be more correct to call them Auto-Encoding Variational Bayes methods 
+and to introduce them with a Bayesian approach, as they are more related to Variational Bayesian methods then Auto-Encoders, however such description is beyond the scope of this book and we will give only a simplified description of them. 
+The main differences of VAEs with respect to AEs is that VAEs encodes the input into a PDF rather than a point in the latent space, in this way close points in the latent space generate events similar to each other.
+In other words, while for AEs only the points in the latent space where the the training set inputs have been encoded can be safely used to generate an output, in VAEs all the neighborhood of these points can be used.
+
+%The naive way to generate data from a standard autoencoder 
+%VAE
+%It is possible to generate data from a AE, sampling random points
+%is to generate random configurations 
+%in the latent space of dimensionality N, and decode it with the rightmost part of Figure~\ref{fig:autoencoder} (the decoder) in order to obtain a M dimensional configuration which is ``generated'' by the network. In practice, there is no guarantee that the latent space gets organized in a way that all its points are used in the decoding/encoding process. This is where Variational Autoencoders differ: it is explicitly trained in such a way to ensure that the latent space is apt for a generative process.
+Therefore VAEs, once trained to generate elements from points sampled nearby the latent space position where the training set events are ecnoded, matching as close as possible the  training set itself, 
+can be used to \emph{generate} realistic data, 
+interpolating or extrapolating from the training set events.
+
+The loss functions of AEs is a ``distance'' between the input element and the generated one. In VAEs there is another term, usually a Kullback-Leibler (KL) divergence, that measure the distance between the encoding PDF and a reference PDF, usually a Normal distribution.
+
+There is no guarantee that the latent space gets organized with respect to the input features. However, it has been shown \cite{bvae} that increasing the coefficient of the KL term in the sum of the two loss function addenda, increases the probability that the VAE learns a disentagled representation of the input. This hyper parameter is usually referred as $\beta$ and this modification of the VAE, $\beta$-VAE.
+
+VAEs tend to produce outputs blurred with respect to inputs, however, they have the great advantage that it is possible, especially with $\beta$-VA, to control the features of the generated output.
 
 ...
 ...
