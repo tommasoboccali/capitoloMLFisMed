@@ -1,11 +1,10 @@
 \section{Strong and weak points about Neural Networks applications for Monte Carlo simulations}
-
-MANCA CAPPELLO 
+Different AI based techniques for Monte Carlo simulations have been presented in literature, as shown in Section~\ref{sec:examples}; their level of maturity varies between proofs of concept, advanced tests and production systems. Still, while we may be convinced that Neural Networks can be a reasonable substitute for classical algorithms, that would not be enough in absence of clear advantages in other areas.
 
 \subsection{Speed, accuracy and reliability}
 \label{subsec:speed}
-As described in Section~\ref{subsec:interactions}, one of the main advantage of AI inspired systems, when compared to more standard simulation algorithms, is a potential speed-up without necessarily impacting performance.
-The improvement comes from the nature of feed-forwards Neural Networks used at inference time, which are described as a series of matrix multiplication of fixed length\footnote{This is not strictly  valid for some types of recurrent networks, where the recurrence can introduce an indetermination in the sequence of mathematical operations.}, without access to any data structure apart from the inputs and the weights. Today's processors, from CPUs to GPUs to TPUs, are very efficient in processing matrix algebra calculations; this reflects directly to short processing times.
+As described in Section~\ref{subsec:interactions}, one of the main expected advantage of AI inspired systems, when compared to more standard simulation algorithms, is a potential speed-up without necessarily impacting performance.
+The improvement comes from the nature of feed-forwards Neural Networks used at inference time, which are described as a series of matrix multiplication of fixed length\footnote{This is not strictly valid for some types of recurrent networks, where the recurrence can introduce an indetermination in the sequence of mathematical operations.}, without access to any data structure apart from the inputs and the weights. Today's processors, from CPUs to GPUs to TPUs, are very efficient in processing matrix algebra calculations; this reflects directly to short processing times.
 In order to give quantitative examples, we can refer to the two complex GANs described in Section~\ref{subsec:interactions}, which are fed by Geant4-processed events in the training phase.
 Table~\ref{tab:speed} reports on the absolute time needed to process Geant4 vs the GAN for events with similar input; the speedups are of order 100x using CPUs, and an additional factor 100x with GPUs\footnote{It can be said that it is an unfair comparison since Geant4 cannot currently use GPUs; still, it shows how AI inspired tools offer a path to the use of more performing technologies.}.
 \begin{center}
@@ -22,7 +21,10 @@ Table~\ref{tab:speed} reports on the absolute time needed to process Geant4 vs t
 Fig~\ref{tab:speed}: Geant4 vs GAN performance under various setups, as extracted from~\cite{calogan} and~\cite{3dgan}.
 \label{tab:speed}
 \end{center}
+So, speed-wise there is a clear advantage; but what about the accuracy of the simulations? 
+We can refer back to Figures~\ref{fig:testreco} and \ref{fig:calogan} to compare the reference (detailed simulations) with AI predictions. In general, a perfect agreement is not to be expected, but in many applications a O(10)\% agreement at the much reduced cost is a viable solution, also because even the detailed simulation is not expected to be perfectly describing the data. A different problem is present when one wants to use the AI system beyond the quantities explicitly used in the training phase: while these can be accurately reproduced, there is no guarantee that derived or different quantities are, since these are not explicit target of the minimization procedure. In these case, as discussed in~\cite{calogan}, an accurate check should be done \emph{a posteriori} on all the quantities used from the system; if any of them turns out to be unsatisfactory, the standard solution is to include them explicitly in the GAN training as an additional target.
 
+RMS?????
 
 \subsection{Unphysical responses and how to impose physical constraints}
 \label{subsec:physical}
@@ -33,7 +35,7 @@ There is no guarantee a ML system will conserve them, since their validity is no
 In most of the cases shown in Section~\ref{sec:examples} the strict conservation (for example) of energy in particle showering into calorimeters does not need to be exact, since in the transfer  between the energy in the impinging particle and the final products is in any case approximate due to effects of leaking, and smoothed by the detector resolution. In cases like this, while the training tries to  match the "cell by cell" energy deposition, there is no explicit request that the total energy deposited in the calorimeter matches the precise simulation. In principle, a loss function designed to have the minimum when all the cells have the "expected" energy would suffice, but experience (and somehow common sense) shows that by adding to the loss function an explicit term tending to the conservation of total energy, like in Eqn. (2) in~\cite{calogan}, constrains can implemented even if not in exact form. This solution is called ``soft'' precisely due to this.
 The relative weight of the various terms in the loss functions are somehow arbitrary, and an higher weight to the part tending to the constraint (not really imposing it!) represents the developer desire to have it more precisely maintained, even if never exactly.
 
-A different approach, as  presented in ~\cite{salzmann}, tries to implement instead ``hard'' and exact constraints on the outputs during the training  phase, the mathematical complexity and the time needed increase, such as to advice the use of (eventually up-weighted)  ``soft'' constraints in any case.
+A different approach, as  presented in ~\cite{salzmann}, tries to implement instead ``hard'' and exact constraints on the outputs during the training  phase; though, the mathematical complexity and the time needed increase, such as to advice the use of (eventually up-weighted)  ``soft'' constraints in any case.
 
 % https://arxiv.org/pdf/1706.02025.pdf
 %example from https://journals.aps.org/prd/pdf/10.1103/PhysRevD.97.014021 : eqn (2) and following
