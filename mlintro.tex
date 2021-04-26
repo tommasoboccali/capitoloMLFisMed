@@ -147,7 +147,7 @@ In other words, while for AEs only the points in the latent space where the the 
 %It is possible to generate data from a AE, sampling random points
 %is to generate random configurations 
 %in the latent space of dimensionality N, and decode it with the rightmost part of Figure~\ref{fig:autoencoder} (the decoder) in order to obtain a M dimensional configuration which is ``generated'' by the network. In practice, there is no guarantee that the latent space gets organized in a way that all its points are used in the decoding/encoding process. This is where Variational Autoencoders differ: it is explicitly trained in such a way to ensure that the latent space is apt for a generative process.
-Therefore VAEs, once trained to generate elements from points sampled nearby the latent space position where the training set events are ecnoded, matching as close as possible the  training set itself, 
+Therefore VAEs, once trained to generate elements from points sampled nearby the latent space position where the training set events are encoded, matching as close as possible the  training set itself, 
 can be used to \emph{generate} realistic data, 
 interpolating or extrapolating from the training set events.
 
