@@ -134,23 +134,22 @@ The easiest form of autoencoder has the number of inputs and outputs equal to M,
  \end{itemize}
  
 %CM: aggiungerei piu' cose sulle VAE che sono a mio avviso la categoria di algoritmi piu' interessanti per il MC 
-Auto-Encoders are only able to reproduce the elements of the training set but not to interpolate among them. Kingma and Welling \cite{vae} introduced the Variational Auto-Encoder (VAE) class of algorithms. It would be more correct to call them Auto-Encoding Variational Bayes methods 
-and to introduce them with a Bayesian approach, as they are more related to Variational Bayesian methods then Auto-Encoders, however such description is beyond the scope of this book and we will give only a simplified description of them. 
-The main differences of VAEs with respect to AEs is that VAEs encodes the input into a probability density function (PDF) rather than a point in the latent space, in this way close points in the latent space generate events similar to each other.
-In other words, while for AEs only the points in the latent space where the the training set inputs have been encoded can be safely used to generate an output, in VAEs all the neighborhood of these points can be used.
+Auto-Encoders are only able to reproduce the elements of the training set but not to interpolate among them; Kingma and Welling \cite{vae} introduced the Variational Auto-Encoder (VAE) class of algorithms, or more correctly "Auto-Encoding Variational Bayes" methods as they are more related to Variational Bayesian methods then Auto-Encoders.
+The main differences of VAEs with respect to AEs is that VAEs encodes the input into a probability density function (PDF) rather than a point in the latent space; in this way, close points in the latent space generate events similar to each other.
+This is essential if willing to use VAEs as generators, as in Monte Carlo simulations: a sampling of the latent space "close" to the training configurations can be used to generate "valid" output configurations. In standard AEs, instead, only the precise points in the latent space where the the training set inputs have been encoded can be safely used to generate outputs.
 
 %The naive way to generate data from a standard autoencoder 
 %VAE
 %It is possible to generate data from a AE, sampling random points
 %is to generate random configurations 
 %in the latent space of dimensionality N, and decode it with the rightmost part of Figure~\ref{fig:autoencoder} (the decoder) in order to obtain a M dimensional configuration which is ``generated'' by the network. In practice, there is no guarantee that the latent space gets organized in a way that all its points are used in the decoding/encoding process. This is where Variational Autoencoders differ: it is explicitly trained in such a way to ensure that the latent space is apt for a generative process.
-VAEs, once trained to generate elements from points sampled nearby the latent space position where the training set events are encoded,
+As said, VAEs, once trained to generate elements from points sampled nearby the latent space position where the training set events are encoded,
 can be used to \emph{generate} realistic data, 
 interpolating or extrapolating from the training set events; this make them very useful for the generation of Monte Carlo simulations.
 
-The loss functions of AEs is a ``distance'' between the input element and the generated one; in VAEs there is another term, typically a Kullback-Leibler (KL)\cite[kl] divergence, that measures the distance between the encoding PDF and a reference PDF, usually a Normal distribution.
+The loss functions of AEs is a ``distance'' between the input element and the one generated in output; in VAEs there is another term, typically a Kullback-Leibler (KL)\cite{kl} divergence, that measures the distance between the encoding PDF and a reference PDF, usually a Normal distribution.
 
-There is no guarantee that the latent space gets organized with respect to the input features. However, it has been shown \cite{bvae} that increasing the coefficient of the KL term in the sum of the two loss function addenda, increases the probability that the VAE learns a disentagled representation of the input. This hyper parameter is usually referred as $\beta$ and this modification of the VAE, $\beta$-VAE.
+There is no guarantee that the latent space gets optimally organized with respect to the input features. However, it has been shown~\cite{bvae} that increasing the coefficient of the KL term in the sum of the two loss function addenda, increases the probability that the VAE learns a disentagled representation of the input. This hyper parameter is usually referred as $\beta$ and this modification of the VAE, $\beta$-VAE.
 
 VAEs tend to produce outputs blurred with respect to inputs, however, they have the great advantage that it is possible, especially with $\beta$-VA, to control the features of the generated output and to interpolate with continuity between two input samples.
 
@@ -165,8 +164,8 @@ Generative Adversarial Networks (GANs) are a recent~\cite{goodfellow} class of n
      \label{fig:gan}
  \end{figure}
 
-The method (see Figure~\ref{fig:gan}) implies putting in competition the reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is random. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B "winning" if it can convince C that its response is the real one; in the opposite case, C wins.
-The tension between the two networks pushes the network B to generate outputs which are indistinguishable from the real data / the output of the  algorithms. B and C are generic networks, with Convolutional neural structures mostly used.
+The method (see Figure~\ref{fig:gan}) implies putting in competition a reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is sampled from a random space. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B "winning" if it can convince C that its response is the real one; in the opposite case, C wins.
+The tension between the two networks pushes the network B to generate outputs which are indistinguishable from the real data / the output of the  algorithms. B and C are generic networks, with convolutional neural structures mostly used.
 
 GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the famous generation of realistic faces~\cite{faces}, the capability to reproduce the showering of particles in calorimeters~\cite{calogan}, or for 
 %the automatic segmentation of medical images~\cite{ganmed}.
