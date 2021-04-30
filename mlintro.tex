@@ -149,13 +149,13 @@ interpolating or extrapolating from the training set events; this make them very
 
 The loss functions of AEs is a ``distance'' between the input element and the one generated in output; in VAEs there is another term, typically a Kullback-Leibler (KL)~\cite{Kullback1951} divergence, that measures the distance between the encoding PDF and a reference PDF, usually a Normal distribution.
 
-There is no guarantee that the latent space gets optimally organized with respect to the input features. However, it has been shown~\cite{bvae} that increasing the coefficient of the KL term in the sum of the two loss function addenda, increases the probability that the VAE learns a disentagled representation of the input. This hyper parameter is usually referred as $\beta$ and this modification of the VAE, $\beta$-VAE.
+There is no guarantee that the latent space gets optimally organized with respect to the input features. However, it has been shown~\cite{Kingma2019} that increasing the coefficient of the KL term in the sum of the two loss function addenda, increases the probability that the VAE learns a disentagled representation of the input. This hyper parameter is usually referred as $\beta$ and this modification of the VAE, $\beta$-VAE.
 
 VAEs tend to produce outputs blurred with respect to inputs, however, they have the great advantage that it is possible, especially with $\beta$-VA, to control the features of the generated output and to interpolate with continuity between two input samples.
 
 \subsubsection{Generative Adversarial Networks}
 \label{subsec:gan}
-Generative Adversarial Networks (GANs) are a recent~\cite{goodfellow} class of networks designed to reproduce the behaviour of complex systems without an explicit programming.
+Generative Adversarial Networks (GANs) are a recent~\cite{Goodfellow2020} class of networks designed to reproduce the behaviour of complex systems without an explicit programming.
 
 \begin{figure}[h]
      \centering
@@ -167,7 +167,7 @@ Generative Adversarial Networks (GANs) are a recent~\cite{goodfellow} class of n
 The method (see Figure~\ref{fig:gan}) implies putting in competition a reference algorithm (or real data, A) with a generative network (B), which produces an output with the same structure and whose response, initially, is sampled from a random space. A second network (C) is trained on the capability to distinguish between the algorithm's output and the generated one. The two networks are put in competition (hence the term \emph{adversarial}), with B "winning" if it can convince C that its response is the real one; in the opposite case, C wins.
 The tension between the two networks pushes the network B to generate outputs which are indistinguishable from the real data / the output of the  algorithms. B and C are generic networks, with convolutional neural structures mostly used.
 
-GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the famous generation of realistic faces~\cite{faces}, the capability to reproduce the showering of particles in calorimeters~\cite{calogan}, or for 
+GANs are more and more used when in the need for replicating the behaviour of a known data source, with improved computing performance. Upon successful training, in fact, the network B has the typical speed of (say) a CNN, and is able to reproduce the output of A, which can be a complex and time consuming algorithm. Successful examples are the famous generation of realistic faces~\cite{faces}, the capability to reproduce the showering of particles in calorimeters~\cite{Paganini2018}, or for 
 %the automatic segmentation of medical images~\cite{ganmed}.
 for beam source modelling in Radiation Therapy linacs~\cite{Sarrut2019}.
 
@@ -178,11 +178,11 @@ for beam source modelling in Radiation Therapy linacs~\cite{Sarrut2019}.
 % https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.13458
 
 \subsubsection{Graph Networks}
-In a quite general category of problems, the task is to discover the relations between objects; in the  segmentation of medical images, for example, there is the need to understand whether certain areas are part of a specific organs. Clusterization algorithms in many science realms is another example~\cite{clusterization}.
-The most used  network architecture for these use cases is a Graph Neural Network (GNN, \cite{gnn}).
+In a quite general category of problems, the task is to discover the relations between objects; in the  segmentation of medical images, for example, there is the need to understand whether certain areas are part of a specific organs. Clusterization algorithms in many science realms is another example~\cite{Shlomi2021}.
+The most used  network architecture for these use cases is a Graph Neural Network (GNN, \cite{Scarselli2009}).
 % http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1015.7227&rep=rep1&type=pdf
 In a GNN, nodes (representing objects) and edges (representing connections between nodes) are the basic entities, and the training process aims to correctly categorize the nodes, via an assessment of the strength of each connection.
-GNNs are finding large applications in cases where one wants to replace a complex, combinatorial algorithms with a Neural Network: typical examples in literature are jet clustering in High Energy Physics~\cite{graphclustering}, and tracking in dense particle environments~\cite{graphtracking}.
+GNNs are finding large applications in cases where one wants to replace a complex, combinatorial algorithms with a Neural Network: typical examples in literature are jet clustering in High Energy Physics~\cite{Ju2020}, and tracking in dense particle environments~\cite{graphtracking}.
 % https://arxiv.org/abs/2008.06064
 % https://arxiv.org/pdf/2003.11603.pdf
 

@@ -104,7 +104,7 @@ Monte Carlo tools like Geant4 are designed to simulate, as accurately as possibl
 %A similar approach is presented in~\cite{Sarrut20 18}, 
 
 MC simulations are also frequently used to estimate the efficiency and the geometrical acceptance of a detector, or a detectors system. The simulation of a Single Photon Emission Computed Tomography (SPECT) is usually done in two steps: the first one simulates the interactions of the produced photons with the patient, producing as output the emerging photons; and the second one simulates the response of the collimator-detector system to the emerging photons. This second step is called Angular Response Function (ARF).
-Sarrut et al.~\cite{Sarrut2018} used a GAN to emulate the ARF. The DL algorithm takes as input the incidence angles of the photon and its energy and gives back the probability of detecting it in one of the possible energy windows, in a way similar to the DL algorithm developed for classification. %CM: in realta' ho letto che l'output di una rete simile non può essere considerata una probabilita'
+Sarrut et al.~\cite{Sarrut2018} used a GAN to emulate the ARF. The DL algorithm takes as input the incidence angles of the photon and its energy and gives back the probability of detecting it in one of the possible energy windows. %CM: in realta' ho letto che l'output di una rete simile non può essere considerata una probabilita'
 In summary, the DL algorithm emulates the detector system, including the collimators.
 
 \begin{figure}[h]
