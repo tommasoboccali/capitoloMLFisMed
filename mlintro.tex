@@ -24,10 +24,10 @@ Neglecting any functional description, the human brain can be described as an or
  In our current understanding, the neurons are the units performing basic "operations" within the human brain, and their aggregated response is responsible for the high-level behaviour typical of humans.
  A neuron, as sketched in Figure~\ref{fig:neuron}, is composed of three main units: a number of dendrites, the soma (the cell body), and an axion; the total size largely varies between different types of neurons; the neurons used for cognitive functions (as those in the grey matter of the brain) are usually short, of the order of 10 mm~\cite{neuronlength}.
 Functionally, a neuron is able to generate an electric response on the axion (\emph{output}), depending on the electrical potential present at the synapses (\emph{inputs}) on the dendrites. Neurons can be chained by connections between axions and dendrites, generating a configuration in which N neurons are connected via M synapses.
- The high-level response of the human brain to stimuli is understood to come from the complexity of such connections, with a standard human brain featuring $\sim 10^{11}$ neurons each with $~7000$ synapses, for a total of $\sim 10^{15}$ synapseso ; as we will see in the following, the brain can be interpreted as a complex mathematical system with $10^{15}$ degrees of freedom.
+ The high-level response of the human brain to stimuli is understood to come from the complexity of such connections, with a standard human brain featuring $\sim 10^{11}$ neurons each with $~7000$ synapses, for a total of $\sim 10^{15}$ synapses; as we will see in the following, the brain can be interpreted as a complex mathematical system with $10^{15}$ degrees of freedom.
 
- In literature various models of the neuron behavior have been proposed~\cite{neuronbe1, neuronbe2}; 
- here we will focus on the simplest yet most simple to implement in computer systems~\cite{artificialneuron} (see Figure~\ref{fig:artificialneuron}): %https://en.wikipedia.org/wiki/Artificial_neuron
+ In literature various models of the neuron behavior have been proposed~\cite{Hodgkin1952, Gerstner2002}; 
+ here, we will focus on the simplest yet most simple to implement in computer systems~\cite{neuronWiki} (see Figure~\ref{fig:artificialneuron}): %https://en.wikipedia.org/wiki/Artificial_neuron
  %
  \begin{figure}[h]
     \centering
@@ -43,7 +43,7 @@ Functionally, a neuron is able to generate an electric response on the axion (\e
    y = f\left(\sum_{i=1}^{N} w_i x_i\right)
    \label{eq:artificialneuron}
  \end{equation}
-where $w_i$ are weights modeled after the chemical potentials at the synapses, and the function $f$ wants to model the non linearity of response of biological neurons with the \emph{inputs}; on top of this, the function $f$ is needed in the mathematical model in order to allow the description of non linear phenomena~\cite{nonlinearitytheorem}. The perceptron~\cite{perceptron}, one of the first models used in literature to model Neural Networks, uses a very similar model, with a simplified $f$ function which is simply
+where $w_i$ are weights modeled after the chemical potentials at the synapses, and the function $f$ wants to model the non linearity of response of biological neurons with the \emph{inputs}; on top of this, the function $f$ is needed in the mathematical model in order to allow the description of non linear phenomena~\cite{Hornik1991}. The perceptron~\cite{Rosenblatt1958}, one of the first models used in literature to model Neural Networks, uses a very similar model, with a simplified $f$ function which is simply
 \begin{equation}
   f(\vec{x})= \begin{cases}
                 1 &  \text{if}\  \sum_{i=1}^{N} w_i x_i >0 \\
@@ -64,7 +64,7 @@ Neural networks are designed by combining multiple neurons in \emph{networks}, u
     \label{fig:types}
 \end{figure}
 
-As visible there, some network topologies have an high number of hidden layers. While the Universal Approximation Theorem~\cite{nonlinearitytheorem} states that, under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be ``deep'' (i.e. with many hidden layers). This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with identifiable and logical roles. Hence, relevant networks in today's science tend to be deep.
+As visible there, some network topologies have an high number of hidden layers. While the Universal Approximation Theorem~\cite{Hornik1991} states that, under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be ``deep'' (i.e. with many hidden layers). This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with identifiable and logical roles. Hence, relevant networks in today's science tend to be deep.
 
 % nonlinearitytheorem     Recommended Citation
 %Kawaguchi, Kiyoshi, "A multithreaded software model for backpropagation neural network applications" (2000). ETD Collection for %University of Texas, El Paso. AAIEP05411.
@@ -75,7 +75,7 @@ from a so-called training set.
 
 In the simplest type of networks, the responses from the neurons in the hidden and the final layers are considered in sequence (inputs to outputs), with each layer \emph{feeding} the following layers; hence the name Feed Forward Neural Networks (FFNNs).
 
-During the training, the network adjusts its internal free degrees of freedom (the weights $w_i^j$ in equation~\ref{eq:artificialneuron}, extended to the $j$ neurons in the various layers) to better reproduce the desired answers, via minimization procedures which can be either numerical or analytical and involve the definition of a loss function to be explicitly minimized. Typical loss function can be simple weighted differences between the networks results and ``expected results'', but functional forms like cross entropy and mean square errors are more typical~\cite{lossfunctions}.
+During the training, the network adjusts its internal free degrees of freedom (the weights $w_i^j$ in equation~\ref{eq:artificialneuron}, extended to the $j$ neurons in the various layers) to better reproduce the desired answers, via minimization procedures which can be either numerical or analytical and involve the definition of a loss function to be explicitly minimized. Typical loss function can be simple weighted differences between the networks results and ``expected results'', but functional forms like cross entropy and mean square errors are more typical~\cite{Wang2020}.
 
 What has just been described is the training process for \emph{supervised} Neural networks, which rely on an externally provided ``truth'' to adjust for optimal performance, without having any a-priori knowledge or description of the physical process they want to reproduce.
 Other topologies describe instead  \emph{unsupervised} Neural Networks, in which the training process just implies the utilization of datasets without the need to provide the correct answers (which can be unknown). Examples of such networks will be provided in Section~\ref{sec:unsupervised}.
@@ -88,7 +88,7 @@ They are particularly interesting in the realm of Monte Carlo simulations, since
 %a shower from an hadronic particle into a material, when far from the edges, 
 the energy deposition of a particle into a material
 does not depend on the specific entry point nor on its direction.
-CNNs are used with success in categorization problems, where typical structures must be discovered into a set of input data: a typical example is the identification of lesions in medical imaging, trained on reported images by clinicians ~\cite{cnnmedical}, as depicted in Figure~\ref{fig:cnnsmedical}.
+CNNs are used with success in categorization problems, where typical structures must be discovered into a set of input data: a typical example is the identification of lesions in medical imaging, trained on reported images by clinicians~\cite{Anwar2018}, as depicted in Figure~\ref{fig:cnnsmedical}.
 
  \begin{figure}[h]
     \centering
@@ -127,14 +127,14 @@ The easiest form of autoencoder has the number of inputs and outputs equal to M,
  
  Autoencoders in such form are used for two distinct purposes:
  \begin{itemize}
-     \item auto-discover in the inputs hidden symmetries or underlying correlations, which can be used, for example, in lossy compression~\cite{compression} or to drive understanding on the inputs themselves; % https://arxiv.org/abs/1703.00395
-     \item since the network is trained on a specific data sample, it will minimize the difference outputs vs inputs on that specific dataset. Once the same network is presented with ``different'' data, it is expected to fail to reproduce the inputs at the outputs; hence, it can be used to detect anomalous inputs, as important for the detection of not expected features, for example in medical imaging ~\cite{anomalymed} or High Energy Physics events ~\cite{anomalyhep}. 
+     \item auto-discover in the inputs hidden symmetries or underlying correlations, which can be used, for example, in lossy compression~\cite{Liu2021} or to drive understanding on the inputs themselves; % https://arxiv.org/abs/1703.00395
+     \item since the network is trained on a specific data sample, it will minimize the difference outputs vs inputs on that specific dataset. Once the same network is presented with ``different'' data, it is expected to fail to reproduce the inputs at the outputs; hence, it can be used to detect anomalous inputs, as important for the detection of not expected features, for example in medical imaging~\cite{Liu2021} or High Energy Physics events~\cite{Knapp2021}. 
      % https://arxiv.org/pdf/2004.03271.pdf
      % https://arxiv.org/abs/2005.01598
  \end{itemize}
  
 %CM: aggiungerei piu' cose sulle VAE che sono a mio avviso la categoria di algoritmi piu' interessanti per il MC 
-Auto-Encoders are only able to reproduce the elements of the training set but not to interpolate among them; Kingma and Welling \cite{vae} introduced the Variational Auto-Encoder (VAE) class of algorithms, or more correctly "Auto-Encoding Variational Bayes" methods as they are more related to Variational Bayesian methods then Auto-Encoders.
+Auto-Encoders are only able to reproduce the elements of the training set but not to interpolate among them; Kingma and Welling~\cite{Kingma2014} introduced the Variational Auto-Encoder (VAE) class of algorithms, or more correctly "Auto-Encoding Variational Bayes" methods as they are more related to Variational Bayesian methods then Auto-Encoders.
 The main differences of VAEs with respect to AEs is that VAEs encodes the input into a probability density function (PDF) rather than a point in the latent space; in this way, close points in the latent space generate events similar to each other.
 This is essential if willing to use VAEs as generators, as in Monte Carlo simulations: a sampling of the latent space "close" to the training configurations can be used to generate "valid" output configurations. In standard AEs, instead, only the precise points in the latent space where the the training set inputs have been encoded can be safely used to generate outputs.
 
@@ -147,7 +147,7 @@ As said, VAEs, once trained to generate elements from points sampled nearby the 
 can be used to \emph{generate} realistic data, 
 interpolating or extrapolating from the training set events; this make them very useful for the generation of Monte Carlo simulations.
 
-The loss functions of AEs is a ``distance'' between the input element and the one generated in output; in VAEs there is another term, typically a Kullback-Leibler (KL)\cite{kl} divergence, that measures the distance between the encoding PDF and a reference PDF, usually a Normal distribution.
+The loss functions of AEs is a ``distance'' between the input element and the one generated in output; in VAEs there is another term, typically a Kullback-Leibler (KL)~\cite{Kullback1951} divergence, that measures the distance between the encoding PDF and a reference PDF, usually a Normal distribution.
 
 There is no guarantee that the latent space gets optimally organized with respect to the input features. However, it has been shown~\cite{bvae} that increasing the coefficient of the KL term in the sum of the two loss function addenda, increases the probability that the VAE learns a disentagled representation of the input. This hyper parameter is usually referred as $\beta$ and this modification of the VAE, $\beta$-VAE.
 

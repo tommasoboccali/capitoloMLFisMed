@@ -74,7 +74,8 @@ A second similar attempt, applied to the not-yet existing CLIC proposed electrom
 % https://doi.org/10.1051/epjconf/201921402010
 Figure~\ref{fig:3dgan}(left) shows the longitudinal shower shapes for 100 GeV electrons in the electromagnetic part of the calorimeter compared with detailed Geant4 simulations. The level of agreement is very satisfactory. Figure~\ref{fig:3dgan}(right) shows a pictorial rendering of the expected energy deposit by a 100 GeV electron in the calorimeter.
 
-
+%CM aggiungerei una frase sulle potenziali applicazioni mediche
+The last two examples are related to High-Energy particle Physics, however, a similar approach can be used also to emulate the energy deposition in a voxel geometry, such as the CT of a patient.
 
 \begin{figure}[h]
     \centering
@@ -101,6 +102,10 @@ In sections~\ref{subsec:speed} and ~\ref{subsec:physical} we will discuss about 
 \subsubsection{Emulation of detector responses}
 Monte Carlo tools like Geant4 are designed to simulate, as accurately as possible, the energy deposition (in keV, for example) due to the passage of particle / radiation in the material of a detector. In real life, what a scientist measures is instead the response, as analog or digital signals, of a measuring device in which energy deposition is read and processed by some electronic boards. In classical systems, the simulation of radiation / matter must be followed by an ad-hoc simulation of the electronic readout system, in order to be compared with actual readings from a detector. In the case of AI inspired tools, this can be avoided by completely bypassing the ``energy deposition'' output results, and training the system directly with real or realistic (from the above ad-hoc simulation) signals from the electronic back-end. In~\cite{mri}, for example, images from a real MRI apparatus are used for the training the system (see Figure~\ref{fig:elec}); the use of more classical approaches would be indeed more problematic since there is no practical way to measure (and validate) the output in terms of energy deposition in a running system.
 %A similar approach is presented in~\cite{Sarrut20 18}, 
+
+MC simulations are also frequently used to estimate the efficiency and the geometrical acceptance of a detector, or a detectors system. The simulation of a Single Photon Emission Computed Tomography (SPECT) is usually done in two steps: the first one simulates the interactions of the produced photons with the patient, producing as output the emerging photons; and the second one simulates the response of the collimator-detector system to the emerging photons. This second step is called Angular Response Function (ARF).
+Sarrut et al.~\cite{Sarrut2018} used a GAN to emulate the ARF. The DL algorithm takes as input the incidence angles of the photon and its energy and gives back the probability of detecting it in one of the possible energy windows, in a way similar to the DL algorithm developed for classification. %CM: in realta' ho letto che l'output di una rete simile non può essere considerata una probabilita'
+In summary, the DL algorithm emulates the detector system, including the collimators.
 
 \begin{figure}[h]
     \centering
