@@ -64,7 +64,7 @@ Neural networks are designed by combining multiple neurons in \emph{networks}, u
     \label{fig:types}
 \end{figure}
 
-As visible there, some network topologies have an high number of hidden layers. While the Universal Approximation Theorem~\cite{Hornik1991} states that, under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be ``deep'' (i.e. with many hidden layers). This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with identifiable and logical roles. Hence, relevant networks in today's science tend to be deep.
+As visible there, some network topologies have a high number of hidden layers. While the Universal Approximation Theorem~\cite{Hornik1991} states that, under quite generic conditions, a single hidden layer between inputs and outputs should be enough in all cases, networks used in science during the last decade tend to be ``deep'' (i.e. with many hidden layers)~\cite{Lecun2015}. This has multiple motivations: on one side, the theorem states that it is possible to have just one hidden layers, but does not state with how many neurons (and it tends to be a very large number); on the other side, a deep structure tend to be better human readable, with cascade sub networks with identifiable and logical roles. Hence, relevant networks in today's science tend to be deep.
 
 % nonlinearitytheorem     Recommended Citation
 %Kawaguchi, Kiyoshi, "A multithreaded software model for backpropagation neural network applications" (2000). ETD Collection for %University of Texas, El Paso. AAIEP05411.
@@ -83,23 +83,23 @@ Other topologies describe instead  \emph{unsupervised} Neural Networks, in which
 \subsection{Convolutional networks}
 Convolutional networks (CNNs) are a useful subset of neural networks, which exhibit peculiar characteristics of showing  response space invariant with respect of the inputs.
 
-They are particularly interesting in the realm of Monte Carlo simulations, since the space invariance is a valuable characteristics:  
+CNNs use basic neurons as explained in Section~\ref{subsect:brain}, with those in the hidden layers fed by small portions of the inputs per iteration, thus realizing spatial independence. As depicted in Figure~\ref{fig:cnn}, multiple application of several convolutional layers and pooling layers drive to an overall analysis on the inputs, and to the final  outputs. Inputs can be either one dimensional (e.g. vectors of features), two dimensional (e.g. images) or multidimensional arrays.
+CNNs are used with success in categorization problems, where specific structures, must be discovered into a set of input data: a typical example is the identification of images with lesions in medical imaging, where CNN classifiers are trained on reported images by clinicians~\cite{Anwar2018}.
+
+ \begin{figure}[h]
+    \centering
+%    \hfill
+         \includegraphics[width=0.95\textwidth]{images/cnn.png}
+     \caption{Basic structure of a CNN.}
+     \label{fig:cnn}
+\end{figure}
+
+
+CNNs are particularly interesting in the realm of Monte Carlo simulations, since the space invariance is a valuable characteristics:  
 %CM farei un esempio piu' vicino all'ambito medico
 %a shower from an hadronic particle into a material, when far from the edges, 
 the energy deposition of a particle into a material
 does not depend on the specific entry point nor on its direction.
-CNNs are used with success in categorization problems, where typical structures must be discovered into a set of input data: a typical example is the identification of lesions in medical imaging, trained on reported images by clinicians~\cite{Anwar2018}, as depicted in Figure~\ref{fig:cnn}.
-
- \begin{figure}[h]
-    \centering
-    \hfill
-         \includegraphics[width=0.95\textwidth]{images/cnn.png}
-
-     \caption{ALE SERVE UN ESEMPIO.}
-     \label{fig:cnn}
-\end{figure}
-
-CNNs use basic neurons as explained in Section~\ref{subsect:brain}, with those in the hidden layers fed by small portions of the inputs per iteration, thus realizing spatial independence. Multiple application of several convolutional layers drive to an overall analysis on the inputs, and to the final outputs.
 
 \subsection{Recurrent networks}
 The CNNs above described are a type of \emph{stateless} network, in which the output depends only (given a static set of weights) on the inputs presented on the first layer. In Recurrent Neural Networks (RNNs), the response to a specific input feature set also depends on the history of the network, i.e. the inputs presented at prior times; as such, the network presents a ``memory'', which can be used to correlate multiple inputs in sequence. A typical utilization pattern is in the presence of inputs of variable length, which cannot be estimated \emph{a priori}, like in the analysis of text or speech sequences. 
@@ -129,15 +129,15 @@ The easiest form of autoencoder has the number of inputs and outputs equal to M,
  Autoencoders in such form are used for two distinct purposes:
  \begin{itemize}
      \item auto-discover in the inputs hidden symmetries or underlying correlations, which can be used, for example, in lossy compression~\cite{Liu2021} or to drive understanding on the inputs themselves; % https://arxiv.org/abs/1703.00395
-     \item since the network is trained on a specific data sample, it will minimize the difference outputs vs inputs on that specific dataset. Once the same network is presented with ``different'' data, it is expected to fail to reproduce the inputs at the outputs; hence, it can be used to detect anomalous inputs, as important for the detection of not expected features, for example in medical imaging~\cite{Liu2021} or High Energy Physics events~\cite{Knapp2021}. 
+     \item since the network is trained on a specific data sample, it will minimize the difference outputs vs inputs on that specific dataset. Once the same network is presented with ``different'' data, it is expected to fail to reproduce the inputs at the outputs; hence, it can be used to detect anomalous inputs, such as corrupted input samples in medical imaging analysis pipelines~\cite{Ferrari2020} or not expected events in High Energy Physics~\cite{Knapp2021}. 
      % https://arxiv.org/pdf/2004.03271.pdf
      % https://arxiv.org/abs/2005.01598
  \end{itemize}
  
 %CM: aggiungerei piu' cose sulle VAE che sono a mio avviso la categoria di algoritmi piu' interessanti per il MC 
-Auto-Encoders are only able to reproduce the elements of the training set but not to interpolate among them; Kingma and Welling~\cite{Kingma2014} introduced the Variational Auto-Encoder (VAE) class of algorithms, or more correctly "Auto-Encoding Variational Bayes" methods as they are more related to Variational Bayesian methods then Auto-Encoders.
+Auto-Encoders are only able to reproduce the elements of the training set but not to interpolate among them; Kingma and Welling~\cite{Kingma2014} introduced the Variational Auto-Encoder (VAE) class of algorithms, or more correctly ``Auto-Encoding Variational Bayes'' methods as they are more related to Variational Bayesian methods then to Auto-Encoders.
 The main differences of VAEs with respect to AEs is that VAEs encodes the input into a probability density function (PDF) rather than a point in the latent space; in this way, close points in the latent space generate events similar to each other.
-This is essential if willing to use VAEs as generators, as in Monte Carlo simulations: a sampling of the latent space "close" to the training configurations can be used to generate "valid" output configurations. In standard AEs, instead, only the precise points in the latent space where the the training set inputs have been encoded can be safely used to generate outputs.
+This is essential if willing to use VAEs as generators, as in Monte Carlo simulations: a sampling of the latent space ``close'' to the training configurations can be used to generate ``valid'' output configurations. In standard AEs, instead, only the precise points in the latent space where the the training set inputs have been encoded can be safely used to generate outputs.
 
 %The naive way to generate data from a standard autoencoder 
 %VAE
