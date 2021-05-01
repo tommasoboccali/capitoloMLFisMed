@@ -88,14 +88,15 @@ They are particularly interesting in the realm of Monte Carlo simulations, since
 %a shower from an hadronic particle into a material, when far from the edges, 
 the energy deposition of a particle into a material
 does not depend on the specific entry point nor on its direction.
-CNNs are used with success in categorization problems, where typical structures must be discovered into a set of input data: a typical example is the identification of lesions in medical imaging, trained on reported images by clinicians~\cite{Anwar2018}, as depicted in Figure~\ref{fig:cnnsmedical}.
+CNNs are used with success in categorization problems, where typical structures must be discovered into a set of input data: a typical example is the identification of lesions in medical imaging, trained on reported images by clinicians~\cite{Anwar2018}, as depicted in Figure~\ref{fig:cnn}.
 
  \begin{figure}[h]
     \centering
     \hfill
-        %\includegraphics[width=0.9\textwidth]{images/artificialneuron.png}
+         \includegraphics[width=0.95\textwidth]{images/cnn.png}
+
      \caption{ALE SERVE UN ESEMPIO.}
-     \label{fig:cnnsmedical}
+     \label{fig:cnn}
 \end{figure}
 
 CNNs use basic neurons as explained in Section~\ref{subsect:brain}, with those in the hidden layers fed by small portions of the inputs per iteration, thus realizing spatial independence. Multiple application of several convolutional layers drive to an overall analysis on the inputs, and to the final outputs.
@@ -182,7 +183,7 @@ In a quite general category of problems, the task is to discover the relations b
 The most used  network architecture for these use cases is a Graph Neural Network (GNN, \cite{Scarselli2009}).
 % http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1015.7227&rep=rep1&type=pdf
 In a GNN, nodes (representing objects) and edges (representing connections between nodes) are the basic entities, and the training process aims to correctly categorize the nodes, via an assessment of the strength of each connection.
-GNNs are finding large applications in cases where one wants to replace a complex, combinatorial algorithms with a Neural Network: typical examples in literature are jet clustering in High Energy Physics~\cite{Ju2020}, and tracking in dense particle environments~\cite{graphtracking}.
+GNNs are finding large applications in cases where one wants to replace a complex, combinatorial algorithms with a Neural Network: typical examples in literature are jet clustering in High Energy Physics~\cite{Ju2020}, and tracking in dense particle environments~\cite{Ju2020det}.
 % https://arxiv.org/abs/2008.06064
 % https://arxiv.org/pdf/2003.11603.pdf
 

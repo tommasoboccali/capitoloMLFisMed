@@ -7,7 +7,7 @@ journal = {Physics Letters B},
 month = {dec},
 number = {1-4},
 pages = {287--302},
-title = {{Measurement of the e+e−→ZZ production cross section at centre-of-mass energies of 183 and 189 GeV}},
+title = {{Measurement of the e$^+$e$^-$ $\rightarrow$ ZZ production cross section at centre-of-mass energies of 183 and 189 GeV}},
 url = {https://linkinghub.elsevier.com/retrieve/pii/S0370269399012885},
 volume = {469},
 year = {1999}
@@ -67,13 +67,19 @@ volume = {117},
 year = {1952}
 }
 
-
 @book{Gerstner2002,
-author = {Gerstner, Wulfram},
-booktitle = {Cambridge University Press},
-title = {{Spiking neuron models : single neurons, populations, plasticity}},
+abstract = {This introduction to spiking neurons can be used in advanced-level courses in computational neuroscience, theoretical biology, neural modeling, biophysics, or neural networks. It focuses on phenomenological approaches rather than detailed models in order to provide the reader with a conceptual framework. The authors formulate the theoretical concepts clearly without many mathematical details. While the book contains standard material for courses in computational neuroscience, neural modeling, or neural networks, it also provides an entry to current research. No prior knowledge beyond undergraduate mathematics is required.},
+author = {Gerstner, Wulfram and Kistler, Werner M.},
+booktitle = {Spiking Neuron Models},
+doi = {10.1017/CBO9780511815706},
+isbn = {9780521813846},
+month = {aug},
+publisher = {Cambridge University Press},
+title = {{Spiking Neuron Models}},
+url = {https://www.cambridge.org/core/product/identifier/9780511815706/type/book},
 year = {2002}
 }
+
 
 
 
@@ -163,17 +169,6 @@ volume = {42},
 year = {2018}
 }
 
-@article{Liu2021,
-abstract = {Scientific simulations on high-performance computing (HPC) systems can generate large amounts of floating-point data per run. As compared to lossless compressors, lossy compressors, such as SZ and ZFP, can reduce data volume more aggressively while maintaining the usefulness of the data. However, a reduction ratio of more than two orders of magnitude is almost impossible without seriously distorting the data. In deep learning, the autoencoder has shown potential for data compression. Whether the autoencoder can deliver similar performance on scientific data, however, is unknown. In this paper, we for the first time conduct a comprehensive study on the use of autoencoders to compress real-world scientific data and illustrate several key findings on using autoencoders for scientific data reduction. We implement an autoencoder-based compression prototype to reduce floating-point data. Our study shows that the out-of-the-box implementation needs to be further tuned in order to achieve high compression ratios and satisfactory error bounds. Our evaluation results show that, for most test datasets, the tuned autoencoder outperforms SZ by 2 to 4X, and ZFP by 10 to 50X in compression ratios, respectively. Our practices and lessons learned in this work can direct future optimizations for using autoencoders to compress scientific data.},
-author = {Liu, Tong and Wang, Jinzhen and Liu, Qing and Alibhai, Shakeel and Lu, Tao and He, Xubin},
-doi = {10.1109/TBDATA.2021.3066151},
-issn = {23327790},
-journal = {IEEE Transactions on Big Data},
-keywords = {Big Data,Compressors,Data models,Decoding,Image coding,Lossy data compression,Prototypes,Tuning,autoencoder,machine learning,scientific data},
-publisher = {Institute of Electrical and Electronics Engineers Inc.},
-title = {{High-Ratio Lossy Compression: Exploring the Autoencoder to Compress Scientific Data}},
-year = {2021}
-}
 
 @article{Liu2021,
 abstract = {Scientific simulations on high-performance computing (HPC) systems can generate large amounts of floating-point data per run. As compared to lossless compressors, lossy compressors, such as SZ and ZFP, can reduce data volume more aggressively while maintaining the usefulness of the data. However, a reduction ratio of more than two orders of magnitude is almost impossible without seriously distorting the data. In deep learning, the autoencoder has shown potential for data compression. Whether the autoencoder can deliver similar performance on scientific data, however, is unknown. In this paper, we for the first time conduct a comprehensive study on the use of autoencoders to compress real-world scientific data and illustrate several key findings on using autoencoders for scientific data reduction. We implement an autoencoder-based compression prototype to reduce floating-point data. Our study shows that the out-of-the-box implementation needs to be further tuned in order to achieve high compression ratios and satisfactory error bounds. Our evaluation results show that, for most test datasets, the tuned autoencoder outperforms SZ by 2 to 4X, and ZFP by 10 to 50X in compression ratios, respectively. Our practices and lessons learned in this work can direct future optimizations for using autoencoders to compress scientific data.},
@@ -199,21 +194,6 @@ title = {{Adversarially Learned Anomaly Detection on CMS open data: re-discoveri
 url = {https://doi.org/10.1140/epjp/s13360-021-01109-4},
 volume = {136},
 year = {2021}
-}
-
-
-@inproceedings{Kingma2014,
-abstract = {How can we perform efficient inference and learning in directed probabilistic models, in the presence of continuous latent variables with intractable posterior distributions, and large datasets? We introduce a stochastic variational inference and learning algorithm that scales to large datasets and, under some mild differentiability conditions, even works in the intractable case. Our contributions is two-fold. First, we show that a reparameterization of the variational lower bound yields a lower bound estimator that can be straightforwardly optimized using standard stochastic gradient methods. Second, we show that for i.i.d. datasets with continuous latent variables per datapoint, posterior inference can be made especially efficient by fitting an approximate inference model (also called a recognition model) to the intractable posterior using the proposed lower bound estimator. Theoretical advantages are reflected in experimental results.},
-archivePrefix = {arXiv},
-arxivId = {1312.6114},
-author = {Kingma, Diederik P. and Welling, Max},
-booktitle = {2nd International Conference on Learning Representations, ICLR 2014 - Conference Track Proceedings},
-eprint = {1312.6114},
-month = {dec},
-publisher = {International Conference on Learning Representations, ICLR},
-title = {{Auto-encoding variational bayes}},
-url = {https://arxiv.org/abs/1312.6114v10},
-year = {2014}
 }
 
 
@@ -298,12 +278,21 @@ urldate = {2021-04-30}
 
 @article{Paganini2018,
 abstract = {The precise modeling of subatomic particle interactions and propagation through matter is paramount for the advancement of nuclear and particle physics searches and precision measurements. The most computationally expensive step in the simulation pipeline of a typical experiment at the Large Hadron Collider (LHC) is the detailed modeling of the full complexity of physics processes that govern the motion and evolution of particle showers inside calorimeters. We introduce CALOGAN, a new fast simulation technique based on generative adversarial networks (GANs). We apply these neural networks to the modeling of electromagnetic showers in a longitudinally segmented calorimeter and achieve speedup factors comparable to or better than existing full simulation techniques on CPU (100×-1000×) and even faster on GPU (up to ∼10 5 ×). There are still challenges for achieving precision across the entire phase space, but our solution can reproduce a variety of geometric shower shape properties of photons, positrons, and charged pions. This represents a significant stepping stone toward a full neural network-based detector simulation that could save significant computing time and enable many analyses now and in the future.},
-author = {Paganini, Michela and {De Oliveira}, Luke and Nachman, Benjamin},
+author = {Paganini, Michela and de Oliveira, Luke and Nachman, Benjamin},
 doi = {10.1103/PhysRevD.97.014021},
-keywords = {doi:10.1103/PhysRevD.97.014021 url:https://doi.org/10.1103/PhysRevD.97.014021},
-title = {{CALOGAN: Simulating 3D high energy particle showers in multilayer electromagnetic calorimeters with generative adversarial networks}},
+file = {:Users/retico/Library/Application Support/Mendeley Desktop/Downloaded/Paganini, De Oliveira, Nachman - 2018 - CALOGAN Simulating 3D high energy particle showers in multilayer electromagnetic calorimeters wi.pdf:pdf},
+issn = {2470-0010},
+journal = {Physical Review D},
+keywords = {doi:10.1103/PhysRevD.97.014021 url:https://doi.org},
+month = {jan},
+number = {1},
+pages = {014021},
+title = {{CaloGAN: Simulating 3D high energy particle showers in multilayer electromagnetic calorimeters with generative adversarial networks}},
+url = {https://link.aps.org/doi/10.1103/PhysRevD.97.014021},
+volume = {97},
 year = {2018}
 }
+
 
 
 @article{Sarrut2019,
@@ -311,7 +300,7 @@ author = {Sarrut, D and Krah, N and L{\'{e}}tang, J M},
 doi = {10.1088/1361-6560/ab3fc1},
 file = {:Users/retico/cernbox/Documents/Literature/MonteCarlo/Sarrut et al. - 2019 - Generative adversarial networks (GAN) for compact -MonteCarlo.pdf:pdf},
 issn = {1361-6560},
-journal = {Physics in Medicine & Biology},
+journal = {Physics in Medicine \& Biology},
 keywords = {generative adversarial network,linac,monte-carlo simulation,phase-space},
 month = {oct},
 number = {21},
@@ -385,4 +374,203 @@ title = {{Supervised jet clustering with graph neural networks for Lorentz boost
 url = {https://journals.aps.org/prd/abstract/10.1103/PhysRevD.102.075014},
 volume = {102},
 year = {2020}
+}
+
+
+@article{Ju2020det,
+abstract = {Pattern recognition problems in high energy physics are notably different from traditional machine learning applications in computer vision. Reconstruction algorithms identify and measure the kinematic properties of particles produced in high energy collisions and recorded with complex detector systems. Two critical applications are the reconstruction of charged particle trajectories in tracking detectors and the reconstruction of particle showers in calorimeters. These two problems have unique challenges and characteristics, but both have high dimensionality, high degree of sparsity, and complex geometric layouts. Graph Neural Networks (GNNs) are a relatively new class of deep learning architectures which can deal with such data effectively, allowing scientists to incorporate domain knowledge in a graph structure and learn powerful representations leveraging that structure to identify patterns of interest. In this work we demonstrate the applicability of GNNs to these two diverse particle reconstruction problems.},
+archivePrefix = {arXiv},
+arxivId = {2003.11603},
+author = {Ju, Xiangyang and Farrell, Steven and Calafiura, Paolo and Murnane, Daniel and Prabhat and Gray, Lindsey and Klijnsma, Thomas and Pedro, Kevin and Cerati, Giuseppe and Kowalkowski, Jim and Perdue, Gabriel and Spentzouris, Panagiotis and Tran, Nhan and Vlimant, Jean-Roch and Zlokapa, Alexander and Pata, Joosep and Spiropulu, Maria and An, Sitong and Aurisano, Adam and Hewes, Jeremy and Tsaris, Aristeidis and Terao, Kazuhiro and Usher, Tracy},
+eprint = {2003.11603},
+file = {::},
+journal = {arXiv},
+month = {mar},
+publisher = {arXiv},
+title = {{Graph Neural Networks for Particle Reconstruction in High Energy Physics detectors}},
+url = {http://arxiv.org/abs/2003.11603},
+year = {2020}
+}
+
+@article{Agostinelli2003,
+abstract = {GEANT4 is a toolkit for simulating the passage of particles through matter. It includes a complete range of functionality including tracking, geometry, physics models and hits. The physics processes offered cover a comprehensive range, including electromagnetic, hadronic and optical processes, a large set of long-lived particles, materials and elements, over a wide energy range starting, in some cases, from 250 eV and extending in others to the TeV energy range. It has been designed and constructed to expose the physics models utilised, to handle complex geometries, and to enable its easy adaptation for optimal use in different sets of applications. The toolkit is the result of a worldwide collaboration of physicists and software engineers. It has been created exploiting software engineering and object-oriented technology and implemented in the C++ programming language. It has been used in applications in particle physics, nuclear physics, accelerator design, space engineering and medical physics. {\textcopyright} 2003 Elsevier Science B.V. All rights reserved.},
+author = {Agostinelli, S. and Allison, J. and Amako et al., K. },
+doi = {10.1016/S0168-9002(03)01368-8},
+file = {::},
+issn = {01689002},
+journal = {Nuclear Instruments and Methods in Physics Research, Section A: Accelerators, Spectrometers, Detectors and Associated Equipment},
+keywords = {Distributed software development,Geometrical modelling,Object-oriented technology,Particle interactions,Simulation,Software engineering},
+month = {jul},
+number = {3},
+pages = {250--303},
+publisher = {North-Holland},
+title = {{GEANT4 - A simulation toolkit}},
+volume = {506},
+year = {2003}
+}
+
+@article{Bohlen2014,
+abstract = {The FLUKA Monte Carlo code is used extensively at CERN for all beam-machine interactions, radioprotection calculations and facility design of forthcoming projects. Such needs require the code to be consistently reliable over the entire energy range (from MeV to TeV) for all projectiles (full suite of elementary particles and heavy ions). Outside CERN, among various applications worldwide, FLUKA serves as a core tool for the HIT and CNAO hadron-therapy facilities in Europe. Therefore, medical applications further impose stringent requirements in terms of reliability and predictive power, which demands constant refinement of sophisticated nuclear models and continuous code improvement. Some of the latest developments implemented in FLUKA are presented in this paper, with particular emphasis on issues and concerns pertaining to CERN and medical applications. {\textcopyright} 2014 Elsevier Inc.},
+author = {B{\"{o}}hlen, T. T. and Cerutti, F. and Chin, M. P.W. and Fass{\`{o}}, A. and Ferrari, A. and Ortega, P. G. and Mairani, A. and Sala, P. R. and Smirnov, G. and Vlachoudis, V.},
+doi = {10.1016/j.nds.2014.07.049},
+issn = {00903752},
+journal = {Nuclear Data Sheets},
+month = {jun},
+pages = {211--214},
+publisher = {Academic Press Inc.},
+title = {{The FLUKA Code: Developments and challenges for high energy and medical applications}},
+volume = {120},
+year = {2014}
+}
+
+
+@incollection{Hughes2001,
+abstract = {Los Alamos NATIONAL LABORATORY STATUS OF THE  TRANSPORT CODE H. Grady Hughes,CCS-4 MarkB.  document. Page 4. I I Status of the  Transport Code },
+author = {Hughes, H. G. and Chadwick, M. B. and Corzine, R. K. and Egdorf, H. W. and Gallmeier, F. X. and Little, R. C. and MacFarlane, R. E. and Mashnik, S. G. and Pitcher, E. J. and Prael, R. E. and Sierk, A. J. and Snow, E. C. and Waters, L. S. and White, M. C. and Young, P. G.},
+booktitle = {Advanced Monte Carlo for Radiation Physics, Particle Transport Simulation and Applications},
+doi = {10.1007/978-3-642-18211-2_154},
+pages = {961--966},
+publisher = {Springer Berlin Heidelberg},
+title = {{Status of the MCNPX Transport Code}},
+url = {https://link.springer.com/chapter/10.1007/978-3-642-18211-2_154},
+year = {2001}
+}
+
+@article{Carminati2018,
+abstract = {We present the first application of three-dimensional convolutional Generative Adversarial Network to High Energy Physics simulation. We generate three-dimensional images of particles depositing energy in high granularity calorimeters. This is the first time such an approach is taken in HEP where most of data is three-dimensional in nature but it is customary to convert it into two-dimensional slices. The present work proves the success of using three dimensional convolutional GAN. Energy showers are well reproduced in all dimensions and show a good agreement with standard techniques (Geant4 detailed simulation). We also demonstrate the ability to condition training on several parameters such as particle type and energy. This work aims at proving that deep learning techniques represent a valid fast alternative to standard Monte Carlo approaches. It is part of the GeantV project.},
+author = {Carminati, F. and Gheata, A. and Khattak, G. and {Mendez Lorenzo}, P. and Sharan, S. and Vallecorsa, S.},
+doi = {10.1088/1742-6596/1085/3/032016},
+file = {::},
+issn = {1742-6588},
+journal = {Journal of Physics: Conference Series},
+month = {sep},
+number = {3},
+pages = {032016},
+publisher = {Institute of Physics Publishing},
+title = {{Three dimensional Generative Adversarial Networks for fast simulation}},
+url = {https://iopscience.iop.org/article/10.1088/1742-6596/1085/3/032016 https://iopscience.iop.org/article/10.1088/1742-6596/1085/3/032016/meta},
+volume = {1085},
+year = {2018}
+}
+
+
+@article{Arce2021,
+abstract = {Background: Geant4 is a Monte Carlo code extensively used in medical physics for a wide range of applications, such as dosimetry, micro- and nanodosimetry, imaging, radiation protection, and nuclear medicine. Geant4 is continuously evolving, so it is crucial to have a system that benchmarks this Monte Carlo code for medical physics against reference data and to perform regression testing. Aims: To respond to these needs, we developed G4-Med, a benchmarking and regression testing system of Geant4 for medical physics. Materials and Methods: G4-Med currently includes 18 tests. They range from the benchmarking of fundamental physics quantities to the testing of Monte Carlo simulation setups typical of medical physics applications. Both electromagnetic and hadronic physics processes and models within the prebuilt Geant4 physics lists are tested. The tests included in G4-Med are executed on the CERN computing infrastructure via the use of the geant-val web application, developed at CERN for Geant4 testing. The physical observables can be compared to reference data for benchmarking and to results of previous Geant4 versions for regression testing purposes. Results: This paper describes the tests included in G4-Med and shows the results derived from the benchmarking of Geant4 10.5 against reference data. Discussion: Our results indicate that the Geant4 electromagnetic physics constructor G4EmStandardPhysics_option4 gives a good agreement with the reference data for all the tests. The QGSP_BIC_HP physics list provided an overall adequate description of the physics involved in hadron therapy, including proton and carbon ion therapy. New tests should be included in the next stage of the project to extend the benchmarking to other physical quantities and application scenarios of interest for medical physics. Conclusion: The results presented and discussed in this paper will aid users in tailoring physics lists to their particular application.},
+author = {Arce, P. and Bolst, D. and Bordage, M. C. and Brown, J. M.C. and Cirrone, P. and Cort{\'{e}}s-Giraldo, M. A. and Cutajar, D. and Cuttone, G. and Desorgher, L. and Dondero, P. and Dotti, A. and Faddegon, B. and Fedon, C. and Guatelli, S. and Incerti, S. and Ivanchenko, V. and Konstantinov, D. and Kyriakou, I. and Latyshev, G. and Le, A. and Mancini-Terracciano, C. and Maire, M. and Mantero, A. and Novak, M. and Omachi, C. and Pandola, L. and Perales, A. and Perrot, Y. and Petringa, G. and Quesada, J. M. and Ramos-M{\'{e}}ndez, J. and Romano, F. and Rosenfeld, A. B. and Sarmiento, L. G. and Sakata, D. and Sasaki, T. and Sechopoulos, I. and Simpson, E. C. and Toshito, T. and Wright, D. H.},
+doi = {10.1002/mp.14226},
+issn = {00942405},
+journal = {Medical Physics},
+keywords = {Geant4,Monte Carlo,benchmarking,medical physics},
+month = {jan},
+number = {1},
+pages = {19--56},
+pmid = {32392626},
+publisher = {John Wiley and Sons Ltd},
+title = {{Report on G4-Med, a Geant4 benchmarking system for medical physics applications developed by the Geant4 Medical Simulation Benchmarking Group}},
+url = {https://pubmed.ncbi.nlm.nih.gov/32392626/},
+volume = {48},
+year = {2021}
+}
+
+
+@article{Mancini-Terracciano2019,
+abstract = {Purpose: Monte Carlo (MC) simulations are widely used for medical applications and nuclear reaction models are fundamental for the simulation of the particle interactions with patients in ion therapy. Therefore, it is of utmost importance to have reliable models in MC simulations for such interactions. Geant4 is one of the most used toolkits for MC simulation. However, its models showed severe limitations in reproducing the yields measured in the interaction of ion beams below 100 MeV/u with thin targets. For this reason, we interfaced two models, SMF (“Stochastic Mean Field”) and BLOB (“Boltzmann-Langevin One Body”), dedicated to simulate such reactions, with Geant4. Methods: Both SMF and BLOB are semi-classical, one-body approaches to solve the Boltzmann-Langevin equation. They include an identical treatment of the mean-field propagation, on the basis of the same effective interaction, but they differ in the way fluctuations are included. Furthermore, we tested a correction to the excitation energy calculated for the light fragments emerging from the simulations and a simple coalescence model. Results: While both SMF and BLOB have been developed to simulate heavy ion interactions, they show very good results in reproducing the experimental yields of light fragments, up to alpha particles, obtained in the interaction of 12C with a thin carbon target at 62 MeV/u. Conclusions: BLOB in particular gives promising results and this stresses the importance of integrating it into the Geant4 toolkit.},
+author = {Mancini-Terracciano, C. and Asai, M. and Caccia, B. and Cirrone, G. A.P. and Dotti, A. and Faccini, R. and Napolitani, P. and Pandola, L. and Wright, D. H. and Colonna, M.},
+doi = {10.1016/j.ejmp.2019.10.026},
+file = {::},
+issn = {1724191X},
+journal = {Physica Medica},
+keywords = {Hadron-therapy,Ion therapy,Monte Carlo simulation,Nuclear reaction},
+month = {nov},
+pages = {116--122},
+pmid = {31706147},
+publisher = {Associazione Italiana di Fisica Medica},
+title = {{Preliminary results coupling “Stochastic Mean Field” and “Boltzmann-Langevin One Body” models with Geant4}},
+volume = {67},
+year = {2019}
+}
+
+
+@article{Ciardiello2020,
+abstract = {Purpose: A reliable model to simulate nuclear interactions is fundamental for Ion-therapy. We already showed how BLOB (“Boltzmann-Langevin One Body”), a model developed to simulate heavy ion interactions up to few hundreds of MeV/u, could simulate also 12C reactions in the same energy domain. However, its computation time is too long for any medical application. For this reason we present the possibility of emulating it with a Deep Learning algorithm. Methods: The BLOB final state is a Probability Density Function (PDF) of finding a nucleon in a position of the phase space. We discretised this PDF and trained a Variational Auto-Encoder (VAE) to reproduce such a discrete PDF. As a proof of concept, we developed and trained a VAE to emulate BLOB in simulating the interactions of 12C with 12C at 62 MeV/u. To have more control on the generation, we forced the VAE latent space to be organised with respect to the impact parameter (b) training a classifier of b jointly with the VAE. Results: The distributions obtained from the VAE are similar to the input ones and the computation time needed to use the VAE as a generator is negligible. Conclusions: We show that it is possible to use a Deep Learning approach to emulate a model developed to simulate nuclear reactions in the energy range of interest for Ion-therapy. We foresee the implementation of the generation part in C++ and to interface it with the most used Monte Carlo toolkit: Geant4.},
+archivePrefix = {arXiv},
+arxivId = {2004.04961},
+author = {Ciardiello, A. and Asai, M. and Caccia, B. and Cirrone, G. A.P. and Colonna, M. and Dotti, A. and Faccini, R. and Giagu, S. and Messina, A. and Napolitani, P. and Pandola, L. and Wright, D. H. and Mancini-Terracciano, C.},
+doi = {10.1016/j.ejmp.2020.04.005},
+eprint = {2004.04961},
+issn = {1724191X},
+journal = {Physica Medica},
+keywords = {Deep Learning,Hadron-therapy,Ion-therapy,Monte Carlo simulations,Nuclear reactions},
+month = {may},
+pages = {65--72},
+pmid = {32330813},
+publisher = {Associazione Italiana di Fisica Medica},
+title = {{Preliminary results in using Deep Learning to emulate BLOB, a nuclear interaction model}},
+volume = {73},
+year = {2020}
+}
+
+
+@article{Napolitani2013,
+abstract = {We investigate the occurrence of bifurcations in the dynamical trajectories depicting central nuclear collisions at Fermi energies. The quantitative description of the reaction dynamics is obtained within a new transport model, based on the solution of the Boltzmann-Langevin equation in three dimensions, with a broad applicability for dissipative fermionic dynamics.Dilute systems formed in central collisions are shown to fluctuate between two energetically favourable mechanisms: reverting to a compact shape or rather disintegrating into several fragments. The latter result can be connected to the recent observation of bimodal distributions for quantities characterising fragmentation processes and may suggest new investigations. {\textcopyright} 2013 Elsevier B.V.},
+author = {Napolitani, P. and Colonna, M.},
+doi = {10.1016/j.physletb.2013.08.005},
+issn = {03702693},
+journal = {Physics Letters, Section B: Nuclear, Elementary Particle and High-Energy Physics},
+month = {oct},
+number = {1-3},
+pages = {382--386},
+publisher = {North-Holland},
+title = {{Bifurcations in Boltzmann-Langevin one body dynamics for fermionic systems}},
+volume = {726},
+year = {2013}
+}
+
+@misc{Sanchez-Gonzalez2020,
+abstract = {Here we present a general framework for learning simulation, and provide a single model implementation that yields state-of-the-art performance across a variety of challenging physical domains, involving fluids, rigid solids, and deformable materials interacting with one another. Our framework—which we term “Graph Network-based Simulators” (GNS)—represents the state of a physical system with particles, expressed as nodes in a graph, and computes dynamics via learned message-passing. Our results show that our model can generalize from single-timestep predictions with thousands of particles during training, to different initial conditions, thousands of timesteps, and at least an order of magnitude more particles at test time. Our model was robust to hyperparameter choices across various evaluation metrics: the main determinants of long-term performance were the number of message-passing steps, and mitigating the accumulation of error by corrupting the training data with noise. Our GNS framework is the most accurate general-purpose learned physics simulator to date, and holds promise for solving a wide range of complex forward and inverse problems.},
+archivePrefix = {arXiv},
+arxivId = {2002.09405},
+author = {Sanchez-Gonzalez, Alvaro and Godwin, Jonathan and Pfaff, Tobias and Ying, Rex and Leskovec, Jure and Battaglia, Peter W},
+booktitle = {arXiv},
+eprint = {2002.09405},
+file = {::},
+issn = {23318422},
+month = {feb},
+title = {{Learning to Simulate Complex Physics with Graph Networks}},
+url = {http://arxiv.org/abs/2002.09405},
+urldate = {2021-04-30},
+year = {2020}
+}
+
+}
+
+
+@article{Linardatos2021,
+abstract = {Recent advances in artificial intelligence (AI) have led to its widespread industrial adoption, with machine learning systems demonstrating superhuman performance in a significant number of tasks. However, this surge in performance, has often been achieved through increased model complexity, turning such systems into “black box” approaches and causing uncertainty regarding the way they operate and, ultimately, the way that they come to decisions. This ambiguity has made it problematic for machine learning systems to be adopted in sensitive yet critical domains, where their value could be immense, such as healthcare. As a result, scientific interest in the field of Explainable Artificial Intelligence (XAI), a field that is concerned with the development of new methods that explain and interpret machine learning models, has been tremendously reignited over recent years. This study focuses on machine learning interpretability methods; more specifically, a literature review and taxonomy of these methods are presented, as well as links to their programming implementations, in the hope that this survey would serve as a reference point for both theorists and practitioners.},
+author = {Linardatos, Pantelis and Papastefanopoulos, Vasilis and Kotsiantis, Sotiris},
+doi = {10.3390/e23010018},
+file = {:Users/retico/cernbox/Documents/Literature/MonteCarlo-capitolo-libro/entropy-23-00018-v2.pdf:pdf},
+issn = {10994300},
+journal = {Entropy},
+keywords = {Black-box,Explainability,Fairness,Interpretability,Machine learning,Sensitivity,Xai},
+number = {1},
+pages = {1--45},
+title = {{Explainable ai: A review of machine learning interpretability methods}},
+volume = {23},
+year = {2021}
+}
+
+@article{Marquez-Neila2017,
+abstract = {Imposing constraints on the output of a Deep Neural Net is one way to improve the quality of its predictions while loosening the requirements for labeled training data. Such constraints are usually imposed as soft constraints by adding new terms to the loss function that is minimized during training. An alternative is to impose them as hard constraints, which has a number of theoretical benefits but has not been explored so far due to the perceived intractability of the problem. In this paper, we show that imposing hard constraints can in fact be done in a computationally feasible way and delivers reasonable results. However, the theoretical benefits do not materialize and the resulting technique is no better than existing ones relying on soft constraints. We analyze the reasons for this and hope to spur other researchers into proposing better solutions.},
+archivePrefix = {arXiv},
+arxivId = {1706.02025},
+author = {M{\'{a}}rquez-Neila, Pablo and Salzmann, Mathieu and Fua, Pascal},
+eprint = {1706.02025},
+file = {::},
+journal = {arXiv},
+month = {jun},
+publisher = {arXiv},
+title = {{Imposing Hard Constraints on Deep Networks: Promises and Limitations}},
+url = {http://arxiv.org/abs/1706.02025},
+year = {2017}
 }
